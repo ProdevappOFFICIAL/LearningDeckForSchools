@@ -41,7 +41,7 @@ function Exams() {
                             exam.map((data) => (
                                 <tr key={data.id} className="hover:bg-gray-50 transition duration-200">
                                     <td className="py-2 px-4 border-b">{data.exam_name}</td>
-                                    <td className="py-2 px-4 border-b">{data.class_name}</td>
+                                    <td className="py-2 px-4 border-b uppercase">{data.class_name}</td>
                                 </tr>
                             ))
                         )}

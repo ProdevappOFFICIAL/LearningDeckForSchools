@@ -19,7 +19,7 @@ const Sidebar = () => {
   return(
     <div className="h-full border-r flex flex-col overflow-y-auto w-20  shadow-sm  bg-zinc-200/20">
     <div className="w-10 h-10 rounded-full  m-4 items-center justify-center  text-green-600 font-bold ">
-     <Image className=" rounded-full border" src={'/lds.png'} alt="lds" width={250} height={250}/>
+     <Image className=" rounded-full border-[3px] border-zinc-400/20 p-[3px] " src={'/lds.png'} alt="lds" width={250} height={250}/>
     </div>
   
     <div className="h-full"/>

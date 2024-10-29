@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,7 @@ import Calculator from '@/components/global/calculator';
 import { CalculatorIcon } from 'lucide-react';
 import Image from 'next/image';
 
+
 interface Question {
   _id: string | number;
   visited: boolean;
@@ -46,13 +47,114 @@ const ExamPage = () => {
 
   const userClass = new URLSearchParams(window.location.search).get("class_name");
   const userName = new URLSearchParams(window.location.search).get("user_name");
-  const examName = "EMBCCY"; 
+  const examName = new URLSearchParams(window.location.search).get("exam_name");
+  const passport = new URLSearchParams(window.location.search).get("key");
+  
 
+  interface Time {
+    min: number;
+    sec: number;
+  }
+  
+  
+
+
+  useEffect(() => {
+    
+    const fetchQuestions = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`http://localhost:3333/Question?exam_name=${examName}&class_name=${userClass}`);
+        const formattedQuestions = response.data.map((ques, index) => {
+          const options = [...ques.incorrect_answers, ques.correct_answer].sort(() => Math.random() - 0.5);
+          return {
+            ...ques,
+            _id: index + 1,
+            visited: false,
+            attempted: false,
+            userOption: -1,
+            options,
+          };
+        });
+        setQuestions(formattedQuestions);
+      } catch (error) {
+        console.error("Error fetching questions:", error);
+        setError("Could not fetch questions.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchQuestions();
+    startTimer();
+    
+  }, [examName, userClass]);
 
   
- 
-    
-  const calculateSubjectScores = () => {
+  const useTimer = (initialMinutes: number, initialSeconds: number) => {
+    const [time, setTime] = useState<Time>({ min: initialMinutes, sec: initialSeconds });
+    const router = useRouter();
+    const refresh = useRef<NodeJS.Timeout | null>(null);
+    const isNavigating = useRef(false);
+  
+    const run = useCallback(() => {
+      setTime((prevTime) => {
+        let { min, sec } = prevTime;
+        if (min === 0 && sec === 0) {
+           
+          if (refresh.current) {
+            clearInterval(refresh.current);
+            refresh.current = null;
+          }
+          if (!isNavigating.current) {
+        
+             saveAndSubmit();
+          }
+          return prevTime;
+        }
+        if (sec === 0) {
+          min--;
+          sec = 59;
+        } else {
+          sec--;
+        }
+        return { min, sec };
+      });
+    }, [router]);
+  
+    const startTimer = useCallback(() => {
+      if (refresh.current) {
+        clearInterval(refresh.current);
+      }
+      run();
+      refresh.current = setInterval(run, 1000); // 1000 milliseconds = 1 second
+    }, [run]);
+  
+    useEffect(() => {
+      return () => {
+        if (refresh.current) {
+          clearInterval(refresh.current);
+        }
+      };
+    }, []);
+  
+    return { time, startTimer };
+  };
+  
+  
+   const {time, startTimer} = useTimer(60 , 2);
+
+
+   useEffect(() => {
+    return () => {
+    if(sessionStorage.getItem("user") == null)
+    {
+      router.push("/")
+    }
+    };
+  }, []);
+
+   const calculateSubjectScores = () => {
     const subjectScores = {};
 
     questions.forEach((ques) => {
@@ -80,14 +182,16 @@ const ExamPage = () => {
       overallScore: questions.reduce((total, ques) => {
         return total + (ques.options[ques.userOption] === ques.correct_answer ? 1 : 0);
       }, 0),
+      full_name: passport,
       username: userName,
       classname: userClass,
+      exam_name: examName,
       subjectScores: calculateSubjectScores(),
       questions,
     };
 
     try {
-      await axios.post('http://192.168.137.1:3333/Result', results);
+      await axios.post('http://localhost:3333/Result', results);
      // alert('Results saved successfully!');
     } catch (error) {
       console.error('Error saving results:', error);
@@ -125,6 +229,7 @@ const ExamPage = () => {
 
   const saveAndSubmit = () => {
     saveResults();
+    sessionStorage.removeItem("user");
     router.push('/');
   };
 
@@ -159,34 +264,7 @@ const ExamPage = () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [questions, currentQuestion]);
-  useEffect(() => {
-    
-    const fetchQuestions = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get(`http://192.168.137.1:3333/Question?exam_name=${examName}&class_name=${userClass}`);
-        const formattedQuestions = response.data.map((ques, index) => {
-          const options = [...ques.incorrect_answers, ques.correct_answer].sort(() => Math.random() - 0.5);
-          return {
-            ...ques,
-            _id: index + 1,
-            visited: false,
-            attempted: false,
-            userOption: -1,
-            options,
-          };
-        });
-        setQuestions(formattedQuestions);
-      } catch (error) {
-        console.error("Error fetching questions:", error);
-        setError("Could not fetch questions.");
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchQuestions();
-  }, [examName, userClass]);
 
   if (loading) {
     return <div>Loading questions...</div>;
@@ -207,6 +285,7 @@ const ExamPage = () => {
     const getButtonColor = (index: number) => {
       return questions[index]?.attempted ? "bg-red-600 text-white" : "bg-blue-600 text-white";
     };
+
   
     return (
 <div className="flex flex-wrap mr-[20px]">
@@ -235,26 +314,9 @@ const ExamPage = () => {
   };
   
   return (
-    <div className='h-screen w-screen flex flex-col items-end mr-4'><div className="flex flex-col w-full h-[500px]">
-      <div className='w-[300px] hidden'>
-        <h2 className="header">
-          <div>
-            Overall  {overallPercentage}%
-          </div>
-        </h2>
-        <div className="details-holder">
-          <h3>Your Performance</h3>
-          {overallPercentage}
-          <h3>Subject Scores</h3>
-          {Object.entries(subjectScores).map(([subject, { correct, total }]) => (
-            <div key={subject} className="mt-2">
-              <h3>{subject}: {correct}/{total} ({Math.round((correct / total) * 100)}%)</h3>
-              {Math.round((correct / total) * 100)}
-            </div>
-          ))}
-        </div>
-
-      </div>
+    <div className='h-screen w-screen flex flex-col items-end mr-4'>
+      <div className="flex flex-col w-full h-[500px]">
+      
       <div className="flex flex-row items-center justify-between m-5 my-5  ">
         <div>
           <Button
@@ -283,8 +345,11 @@ const ExamPage = () => {
           <div className='w-3' />
           Class: {userClass}
         </div>
-        <div className='flex'>
-
+        <div className='flex space-x-4'>
+         <Button variant={"outline"}>
+          {time.min < 10 ? "0" + time.min : time.min}:
+          {time.sec < 10 ? "0" + time.sec : time.sec}
+         </Button>
           <Dialog>
             <DialogTrigger asChild>
               <div>
@@ -332,7 +397,8 @@ const ExamPage = () => {
 
       <Separator />
       <div className="flex flex-col  my-10 p-5 w-auto h-fit">
-        <Card className="h-full w-full ">
+        <div className='flex'>
+ <Card className="h-full w-full ">
           <CardHeader>
             <CardTitle className=' font-bold text-xl'>
               Questions {questions[currentQuestion]?._id}/{questions.length}
@@ -360,6 +426,25 @@ const ExamPage = () => {
             ))}
           </CardContent>
         </Card>
+
+       <Card className='flex flex-col'>
+       <div className="">
+          <div className="flex items-center rounded-sm p-5">
+         <Image width={150} height={150} src={'/students/'+ passport + '.png'} className=" rounded-full bg-blend-screen border border-green-600" alt="Student logo"/>
+          </div>
+        </div>
+        <div className='flex flex-row w-full text-sm p-2 bg-zinc-200/20'>
+         <p>EXAM-NAME:</p><p>{examName}</p> 
+        </div>
+        <div className='flex flex-row w-full text-sm p-2 bg-zinc-200/20'>
+          NAME: {userName}
+        </div>
+        <div className='flex flex-row w-full text-sm p-2 bg-zinc-200/20 uppercase'>
+          CLASS: {userClass}
+        </div>
+       </Card>
+        </div>
+       
         <div className="flex flex-wrap mt-3 mr-[20px]">
           <NavigationPanel
             questions={questions}
@@ -374,7 +459,7 @@ const ExamPage = () => {
 
       </div>
     </div>
-    <div className="flex items-center text-sm py-1 px-2   rounded-full hover:bg-green-200 bg-green-200/20 border border-green-600 font-bold text-green-600 ">   <Image alt="hello" height={30} width={30} src="/lds.png" /> <p>Powered by LearningDeck for Schools </p></div><div className=" h-5" /></div>
+    <div className="flex items-center text-sm py-1 px-2  mt-10 sm:mt-5  rounded-full hover:bg-green-200 bg-green-200/20 border border-green-600 font-bold text-green-600 ">   <Image alt="hello" height={30} width={30} src="/lds.png" /> <p>Powered by LearningDeck for Schools </p></div><div className=" h-5" /></div>
   );
 };
 

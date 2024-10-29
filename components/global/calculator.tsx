@@ -39,13 +39,11 @@ export default function Calculator() {
 <div className=' h-2'/>
 <div className=' flex flex-row'>
 <div className=' w-full'/>
-    <p>
-      =
-    </p>
+  
     <div className='w-full'/>
 
  <Input   value={result}
-          className=' border-transparent w-28'
+          className=' border-zinc-300 bg-zinc-200 w-28'
           placeholder='Answer'
        readOnly/>
 </div>

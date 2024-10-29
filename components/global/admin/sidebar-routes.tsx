@@ -29,11 +29,6 @@ const guestRoutes = [
     href: "/adminDashboard/dashboard/results",
    },
  
-   {
-    icon: Bolt,
-    label: "Dashboard",
-    href: "/adminDashboard/dashboard/settings",
-   },
 
    
  

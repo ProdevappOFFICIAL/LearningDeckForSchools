@@ -19,32 +19,64 @@ import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+
+interface BatchData {
+  id: number;
+  batch_no: string;
+}
    const AdminDashboard = () => {
     const [exam , setExam] = useState("Updating...");
     const [question , setQuestion] = useState("Updating...");
     const [user , setUser] = useState("Updating...");
     const [jsonOutput, setJsonOutput] = useState<string>('');
+    const [batchNo, setBatchNo] = useState(''); // initial batch number
+    const [id, setId] = useState(1); // assuming id is 1 based on your example
+  
+    // Fetch current batch data on component mount
+    useEffect(() => {
+      axios.get(`http://localhost:3333/Batch/${id}`)
+        .then(response => {
+          setBatchNo(response.data.batch_no);
+        })
+        .catch(error => {
+          console.error('Error fetching batch data:', error);
+        });
+    }, [id]);
+  
+    // Function to handle updating the batch_no
+    const handleUpdateBatchNo = () => {
+      axios.put(`http://localhost:3333/Batch/${id}`, {
+        batch_no: batchNo
+      })
+        .then(response => {
+        
+        })
+        .catch(error => {
+          console.error('Error updating batch number:', error);
+        });
+    };
     useEffect(() => {
       async function getAllExam(){
-          const value  = await axios.get("http://192.168.137.1:3333/ExamCombination");
+          const value  = await axios.get("http://localhost:3333/ExamCombination");
           setExam(value.data.length);
       }
       getAllExam();
 
 
       async function getAllQuestions(){
-          const value  = await axios.get("http://192.168.137.1:3333/Question");
+          const value  = await axios.get("http://localhost:3333/Question");
           setQuestion(value.data.length);
       }
       getAllQuestions();
 
 
       async function getAllUsers(){
-          const value  = await axios.get("http://192.168.137.1:3333/User");
+          const value  = await axios.get("http://localhost:3333/User");
           setUser(value.data.length);
       }
       getAllUsers();
   })
+
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -53,7 +85,7 @@ import axios from "axios";
     const jsonData = convertTxtToJson(text);
     setJsonOutput(JSON.stringify(jsonData, null, 2));
   };
-
+    
   const convertTxtToJson = (txtContent) => {
     const lines = txtContent.split('\n').map(line => line.trim()).filter(Boolean);
 
@@ -136,7 +168,40 @@ import axios from "axios";
      <div className="flex items-center gap-x-4 py-3 px-3 border-b w-full">
      <div className="flex items-center gap-x-2">   <Image className=" rounded-full border" alt="hello" height={50} width={50} src="/lds.png"/> <p className=" text-zinc-800  text-xl ">LearningDeck</p></div>
       <div className="w-full"/>
+      <Dialog>
+              <DialogTrigger asChild>
+                <div>
+                  <Button variant={'outline'}>Change Batch Number</Button>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle className=" text-black/80">Batch Number</DialogTitle>
+                  <DialogDescription className="w-full">
+
+                    <div className="flex justify-between  w-full mt-5">
+                      <div>
+                        Change Exam Batch Number:
+                      </div>
+                     <select className=" bg-zinc-200/20 border px-2 py-1 rounded-sm" value={batchNo} onChange={e => setBatchNo(e.target.value)}>
+                       <option value="1"> BATCH 1</option>
+                       <option value="2"> BATCH 2</option>
+                     </select>                
+                    
+                    </div>
+                  </DialogDescription>
+                </DialogHeader>
+                <DialogFooter>
+                  <DialogClose asChild>
+                  <Button onClick={handleUpdateBatchNo} className=" bg-blue-600">Save</Button>
+                  </DialogClose>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
+
     
+      
+
       <Dialog>
               <DialogTrigger asChild>
                 <div>
@@ -300,15 +365,15 @@ import axios from "axios";
           <div className="flex flex-row p-2 bg-zinc-200  border rounded-tr rounded-br ">
           <div className="flex w-[200px] flex-col  ">
           <div className=" text-sm">
-          Exam Number
+          -------------------
         </div>
         <div className="text-[11px]">
-          total number
+        -------------------
         </div>
         </div>
         <div className="w-full"/>
         <p>
-          20
+          
         </p>
           </div>
        
@@ -318,15 +383,15 @@ import axios from "axios";
           <div className="flex flex-row p-2 bg-zinc-200  border rounded-tr rounded-br ">
           <div className="flex w-[200px] flex-col  ">
           <div className=" text-sm">
-          Exam Number
+          -------------------
         </div>
         <div className="text-[11px]">
-          total number
+        -------------------
         </div>
         </div>
         <div className="w-full"/>
         <p>
-          20
+          
         </p>
           </div>
        
@@ -336,15 +401,15 @@ import axios from "axios";
           <div className="flex flex-row p-2 bg-zinc-200  border rounded-tr rounded-br ">
           <div className="flex w-[200px] flex-col  ">
           <div className=" text-sm">
-          Exam Number
+          -------------------
         </div>
         <div className="text-[11px]">
-          total number
+        -------------------
         </div>
         </div>
         <div className="w-full"/>
         <p>
-          20
+          
         </p>
           </div>
        
