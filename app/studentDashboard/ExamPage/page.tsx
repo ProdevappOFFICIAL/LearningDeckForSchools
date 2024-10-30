@@ -1,5 +1,5 @@
 'use client';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import { Button } from "@/components/ui/button";
@@ -49,13 +49,10 @@ const ExamPage = () => {
   const userName = new URLSearchParams(window.location.search).get("user_name");
   const examName = new URLSearchParams(window.location.search).get("exam_name");
   const passport = new URLSearchParams(window.location.search).get("key");
-  
+  const [minutes, setMinutes] = useState(1);
+  const [seconds, setSeconds] = useState(0); // Set initial time here
+  const [isActive, setIsActive] = useState(false);
 
-  interface Time {
-    min: number;
-    sec: number;
-  }
-  
   
 
 
@@ -86,73 +83,7 @@ const ExamPage = () => {
     };
 
     fetchQuestions();
-    startTimer();
-    
-  }, [examName, userClass]);
-
-  
-  const useTimer = (initialMinutes: number, initialSeconds: number) => {
-    const [time, setTime] = useState<Time>({ min: initialMinutes, sec: initialSeconds });
-    const router = useRouter();
-    const refresh = useRef<NodeJS.Timeout | null>(null);
-    const isNavigating = useRef(false);
-  
-    const run = useCallback(() => {
-      setTime((prevTime) => {
-        let { min, sec } = prevTime;
-        if (min === 0 && sec === 0) {
-           
-          if (refresh.current) {
-            clearInterval(refresh.current);
-            refresh.current = null;
-          }
-          if (!isNavigating.current) {
-        
-             saveAndSubmit();
-          }
-          return prevTime;
-        }
-        if (sec === 0) {
-          min--;
-          sec = 59;
-        } else {
-          sec--;
-        }
-        return { min, sec };
-      });
-    }, [router]);
-  
-    const startTimer = useCallback(() => {
-      if (refresh.current) {
-        clearInterval(refresh.current);
-      }
-      run();
-      refresh.current = setInterval(run, 1000); // 1000 milliseconds = 1 second
-    }, [run]);
-  
-    useEffect(() => {
-      return () => {
-        if (refresh.current) {
-          clearInterval(refresh.current);
-        }
-      };
-    }, []);
-  
-    return { time, startTimer };
-  };
-  
-  
-   const {time, startTimer} = useTimer(60 , 2);
-
-
-   useEffect(() => {
-    return () => {
-    if(sessionStorage.getItem("user") == null)
-    {
-      router.push("/")
-    }
-    };
-  }, []);
+    }, [examName, userClass]);
 
    const calculateSubjectScores = () => {
     const subjectScores = {};
@@ -175,9 +106,14 @@ const ExamPage = () => {
 
     return subjectScores;
   };
+  
+   const saveAndSubmit = () => {
+    saveResults();
+    sessionStorage.removeItem("user");
+    router.push('/auth');
+  };
 
-  // Save results to the server
-  const saveResults = async () => {
+ const saveResults = async () => {
     const results = {
       overallScore: questions.reduce((total, ques) => {
         return total + (ques.options[ques.userOption] === ques.correct_answer ? 1 : 0);
@@ -198,16 +134,45 @@ const ExamPage = () => {
      // alert('Failed to save results.');
     }
   };
+  
+  useEffect(() => {
+    let interval = null;
 
-  const subjectScores = calculateSubjectScores();
-  const totalQuestions = questions.length;
-  const overallScore = questions.reduce((total, ques) => {
-    return total + (ques.options[ques.userOption] === ques.correct_answer ? 1 : 0);
-  }, 0);
-  const overallPercentage = Math.round((overallScore / totalQuestions) * 100);
+    if (isActive && (minutes > 0 || seconds > 0)) {
+      interval = setInterval(() => {
+        if (seconds === 0) {
+          if (minutes > 0) {
+            setMinutes((prevMinutes) => prevMinutes - 1);
+            setSeconds(59);
+          }
+        } else {
+          setSeconds((prevSeconds) => prevSeconds - 1);
+        }
+      }, 1000);
+    } else if (isActive && minutes === 0 && seconds === 0) {
+      // Timer finished, redirect to another page
+      saveAndSubmit();
+      setIsActive(false);
+      setMinutes(0);
+      setSeconds(0); // Reset to initial time
+    }
 
+    return () => clearInterval(interval);
+  }, [isActive, minutes, seconds, router]);
 
-
+ useEffect( () => {
+    return () => { 
+      
+ setIsActive(true);
+    if(sessionStorage.getItem("user") == null)
+    {
+      router.push("/auth")
+    }
+   
+    };
+  }, []);
+  // Save results to the server
+ 
 
   const markVisited = () => {
     const temp = [...questions];
@@ -227,16 +192,8 @@ const ExamPage = () => {
     }
   };
 
-  const saveAndSubmit = () => {
-    saveResults();
-    sessionStorage.removeItem("user");
-    router.push('/');
-  };
 
-  const handlePageChange = (index: number) => {
-    markVisited(); // Mark current question as visited before changing
-    setCurrentQuestion(index);
-  };
+ 
   useEffect(() =>{
   //  startTimer();
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -265,16 +222,12 @@ const ExamPage = () => {
     };
   }, [questions, currentQuestion]);
 
-
   if (loading) {
     return <div>Loading questions...</div>;
   }
-
   if (error) {
     return <div>Error: {error}</div>;
   }
-
-
   
   const NavigationPanel = ({ questions, setQuestions, currentQuestion, setCurrentQuestion, markVisited }) => {
     const handlePageChange = (page: number) => {
@@ -347,8 +300,7 @@ const ExamPage = () => {
         </div>
         <div className='flex space-x-4'>
          <Button variant={"outline"}>
-          {time.min < 10 ? "0" + time.min : time.min}:
-          {time.sec < 10 ? "0" + time.sec : time.sec}
+         {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}
          </Button>
           <Dialog>
             <DialogTrigger asChild>

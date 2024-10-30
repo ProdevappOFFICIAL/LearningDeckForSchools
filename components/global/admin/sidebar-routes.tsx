@@ -1,6 +1,6 @@
 "use client";
 import SidebarItem from "./sidebar-item";
-import { Album, Bolt, Book, BookOpenText, Layout, Users } from "lucide-react";
+import { Album, Book, BookOpenText, Layout, Users } from "lucide-react";
 
 const guestRoutes = [
   {

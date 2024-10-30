@@ -2,22 +2,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { MoonLoader } from "react-spinners";
-import { Maximize2Icon, Minimize2Icon, Users, X } from "lucide-react";
+import { Maximize2Icon, Minimize2Icon} from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 function ExamCombination() {
   const [examCombinations, setExamCombinations] = useState([]);
   const [userClass, setUserClass] = useState(""); // Store the user's class
-  const [examname, setexamname] = useState("");
   const [userID, setID] =useState('');
   const [userName, setName] =useState('');
   const [pass, setPass] =useState("");
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(""); // Error state
   const [batch, setBatchNo] = useState();
-  const [loaded, setLoaded] = useState(false);
   
   const router = useRouter();
 
@@ -178,13 +175,13 @@ function ExamCombination() {
                         <div key={no.id}>
                                 { exam.exam_name.includes(no.batch_no) ? (
 
-                           <><div className="flex justify-between items-center p-4 bg-white shadow-lg rounded-lg cursor-pointer hover:bg-gray-100 transition">
+                           <><div className="flex justify-between items-center p-4 bg-white dark:bg-zinc-600 dark:text-white shadow-lg rounded-lg cursor-pointer hover:bg-gray-100 transition">
                                 <div className="flex-1 space-y-3">
                                   <p className="border px-4 py-2">EXAM- NAME: {exam.exam_name} </p>
                                   <p className="border px-4 py-2">ADMISSION NUMBER: {userID}</p>
                                   <p className="border px-4 py-2">NAME: {userName}</p>
                                   <p className="border px-4 py-2 uppercase">CLASS: {userClass}</p>
-                                  <p className="border px-4 py-2">TIMER: {exam.timer}{examCombinations.class_name}</p>
+                                 
                                 </div>
                               </div><button className=" w-full mt-3 bg-green-600 rounded text-white py-2 hover:bg-green-400" onClick={() => handleExamClick(exam)}>
                                   START EXAM

@@ -2,9 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { Card} from "@/components/ui/card";
 import { Separator } from "@radix-ui/react-separator";
-import { Bolt, MoonIcon } from "lucide-react";
+import { Bolt} from "lucide-react";
 import Image from "next/image";
-import { MoonLoader } from "react-spinners";
 import {
   Dialog,
   DialogClose,
@@ -15,22 +14,27 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "next-themes"
 
 
-interface BatchData {
-  id: number;
-  batch_no: string;
-}
+
    const AdminDashboard = () => {
     const [exam , setExam] = useState("Updating...");
     const [question , setQuestion] = useState("Updating...");
     const [user , setUser] = useState("Updating...");
-    const [jsonOutput, setJsonOutput] = useState<string>('');
     const [batchNo, setBatchNo] = useState(''); // initial batch number
-    const [id, setId] = useState(1); // assuming id is 1 based on your example
+    const { setTheme } = useTheme();
   
     // Fetch current batch data on component mount
     useEffect(() => {
@@ -48,7 +52,7 @@ interface BatchData {
       axios.put(`http://localhost:3333/Batch/${id}`, {
         batch_no: batchNo
       })
-        .then(response => {
+        .then(() => {
         
         })
         .catch(error => {
@@ -77,94 +81,120 @@ interface BatchData {
       getAllUsers();
   })
 
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file) return;
 
-    const text = await file.text();
-    const jsonData = convertTxtToJson(text);
-    setJsonOutput(JSON.stringify(jsonData, null, 2));
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+  
+      try {
+         await convertTxtToJson(text); // Convert text file content to JSON
+      } catch (error) {
+          console.error("Error during file conversion or saving process:", error);
+      }
   };
-    
-  const convertTxtToJson = (txtContent) => {
+  
+  const convertTxtToJson = async (txtContent) => {
+    // Split content into lines, trim whitespace, and filter out empty lines
     const lines = txtContent.split('\n').map(line => line.trim()).filter(Boolean);
 
-    const className = lines[0].split('=')[1]?.replace(/"/g, '').trim() || '';
-    const subjectName = lines[1].split('=')[1]?.replace(/"/g, '').trim() || '';
-    const examName = lines[2].split('=')[1]?.replace(/"/g, '').trim() || '';
+    // Extract metadata from the first three lines
+    const className = lines[0]?.split('=')[1]?.replace(/"/g, '').trim() || '';
+    const subjectName = lines[1]?.split('=')[1]?.replace(/"/g, '').trim() || '';
+    const examName = lines[2]?.split('=')[1]?.replace(/"/g, '').trim() || '';
+
+    // Check if required metadata is present
+    if (!className || !subjectName || !examName) {
+        console.error("Error: Missing required exam metadata.");
+        return;
+    }
+
+    console.log("Parsed Metadata:", { className, subjectName, examName });
 
     const questions = [];
     let questionId = 1;
+    let i = 3; // Start after metadata
 
-    // Mapping from letters to answers
-    const answerMapping = {};
+    while (i < lines.length) {
+        console.log(`Processing line ${i}: ${lines[i]}`); // Log current line being processed
+        const line = lines[i];
+        
+        // Detect start of a new question
+        if (line.startsWith('Q')) {
+            // Parse the question text
+            const questionText = line.slice(line.indexOf('.') + 1).trim();
 
-    for (let i = 4; i < lines.length; i++) {
-        if (lines[i].startsWith('Q')) {
-            const questionLine = lines[i];
-            const questionText = questionLine.slice(questionLine.indexOf('.') + 1).trim();
-
+            // Parse answer options A, B, C, D
             const answers = [];
             for (let j = 1; j <= 4; j++) {
                 const answerLine = lines[i + j];
                 if (answerLine && answerLine.startsWith(String.fromCharCode(64 + j))) { // A, B, C, D
                     const answerText = answerLine.slice(answerLine.indexOf('.') + 1).trim();
                     answers.push(answerText);
-                    answerMapping[String.fromCharCode(64 + j)] = answerText; // Save the mapping
+                } else {
+                    console.warn(`Missing or malformed answer option for question ${questionId}, expected ${String.fromCharCode(64 + j)}`);
                 }
             }
 
+            // Ensure we have exactly 4 answer options
+            if (answers.length !== 4) {
+                console.error(`Question ${questionId} does not have exactly 4 answer options. Skipping this question.`);
+                i += 6; // Move to the next question block
+                questionId++;
+                continue; // Skip to next question
+            }
+
+            // Parse the correct answer
             const answerLine = lines[i + 5];
             const correctAnswerLetter = answerLine ? answerLine.split(':')[1]?.trim().toUpperCase() : '';
 
-            // Defensive check for correctAnswerLetter
             if (!correctAnswerLetter || !['A', 'B', 'C', 'D'].includes(correctAnswerLetter)) {
-                console.error("Invalid correct answer format for question ID:", questionId);
-                continue; // Skip this question if the correct answer is invalid
+                console.error(`Invalid or missing correct answer for question ${questionId}, skipping question.`);
+                i += 6; // Move to the next question block
+                questionId++;
+                continue; // Skip to next question
             }
 
-            // Log for debugging
-            console.log("Collected Answers:", answers);
-            console.log("Correct Answer Letter:", correctAnswerLetter);
+            const correctAnswerText = answers[correctAnswerLetter.charCodeAt(0) - 65];
+            const incorrectAnswers = answers.filter((_, index) => index !== (correctAnswerLetter.charCodeAt(0) - 65));
 
-            // Filter out the correct answer to get incorrect answers
-            const incorrectAnswers = answers.filter((answer, index) => {
-                return String.fromCharCode(65 + index) !== correctAnswerLetter; // A, B, C, D
-            });
-
-            questions.push({
+            // Prepare question data
+            const questionData = {
                 id: questionId.toString(),
                 question: questionText,
                 incorrect_answers: incorrectAnswers,
-                correct_answer: answerMapping[correctAnswerLetter], // Get the actual answer text
+                correct_answer: correctAnswerText,
                 class_name: className.toLowerCase(),
                 exam_name: examName,
                 subject: subjectName.toLowerCase()
-            });
+            };
 
+            console.log("Prepared Question Data:", questionData);
+
+            // Attempt to save the question to the API
+            try {
+                const response = await axios.post("http://localhost:3333/Question", questionData);
+                console.log(`Question ID ${questionId} saved successfully:`, response.data);
+                toast("Added " + subjectName.toLowerCase() + " Questions");
+            } catch (error) {
+                console.error("API Error while saving question:", questionData, error);
+            }
+
+            questions.push(questionData);
             questionId++;
-            i += 5; // Move to the next question block
+            i += 6; // Move to the next question block
+        } else {
+            i++; // Continue if line does not start with "Q"
         }
     }
 
-    return {
-        ExamCombination: [
-            {
-                id: "1",
-                exam_name: examName,
-                class_name: className.toLowerCase(),
-                timer: "10:00",
-                lock_mode: "true",
-                enable_timer: "true"
-            }
-        ],
-        Question: questions,
-        Result: []
-    };
+    console.log(`Total questions processed: ${questions.length}`); // Log total processed questions
+    return { Question: questions };
 };
 
+
+
     return ( <div className="flex flex-col w-full">
-       <pre>{jsonOutput}</pre>
+        <Toaster />
      <div className="flex items-center gap-x-4 py-3 px-3 border-b w-full">
      <div className="flex items-center gap-x-2">   <Image className=" rounded-full border" alt="hello" height={50} width={50} src="/lds.png"/> <p className=" text-zinc-800  text-xl ">LearningDeck</p></div>
       <div className="w-full"/>
@@ -232,7 +262,26 @@ interface BatchData {
               </DialogContent>
             </Dialog>
 
-      <MoonIcon/>
+            <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
       <Bolt/>
      </div>
      <div>

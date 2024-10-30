@@ -6,20 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { FlipWords } from "@/components/ui/flip-words";
-import { Maximize2Icon, Minimize2Icon } from "lucide-react";
 const StudentLogin: React.FC = () => {
    const words = ["Path", "Premier", "Ultimate", "Key"];  
    
    const performBackgroundAction = async () => {
-        
-       // setLoading(true);
-       /// setMessage('Working in background...');
-
-        // Simulate a background action with a timeout
+     
         await new Promise((resolve) => setTimeout(resolve, 2000));
         handleLogin();
-       // setLoading(false);
-       // setMessage('Action completed!');
+     
     };
 
     const handleKeyPress = (event: { key: string; }) => {
@@ -37,7 +31,7 @@ const StudentLogin: React.FC = () => {
         return () => {
             window.removeEventListener('keydown', handleKeyPress);
         };
-    }, []);
+    }, [handleKeyPress]);
 
     const [user, setUser] = useState({
         user_email: "",
@@ -80,30 +74,7 @@ const StudentLogin: React.FC = () => {
             console.error("Login error:", error);
         }
     };
-    const goFullScreen = () => {
-        const elem = document.documentElement; // Targeting the whole page
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) {
-          elem.mozRequestFullScreen(); // Firefox
-        } else if (elem.webkitRequestFullscreen) {
-          elem.webkitRequestFullscreen(); // Chrome, Safari, and Opera
-        } else if (elem.msRequestFullscreen) {
-          elem.msRequestFullscreen(); // IE/Edge
-        }
-      };
-    
-      const exitFullScreen = () => {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-          document.mozCancelFullScreen(); // Firefox
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen(); // Chrome, Safari, and Opera
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen(); // IE/Edge
-        }
-      };
+  
       useEffect(() => {
         // Prevent F11 from activating full-screen
         const handleKeyDown = (event: { key: string; preventDefault: () => void; }) => {
@@ -133,8 +104,7 @@ const StudentLogin: React.FC = () => {
 
         <div className=" flex flex-col bg-white items-center justify-center w-full sm:w-6/12  text-black">
         <div className="flex flex-row w-full justify-end items-end space-x-3 m-3 mr-3">
-  <Button onClick={goFullScreen} variant={'outline'}><Maximize2Icon/> </Button>
-      <Button onClick={exitFullScreen} variant={'outline'}> <Minimize2Icon/> </Button>
+
       <div className="w-3"/>
       </div>
           <div className="flex flex-row w-full items-end mt-2 mr-2">
@@ -146,8 +116,8 @@ const StudentLogin: React.FC = () => {
       
         <div className=" h-5"/>
 
-         <Image  alt="hello" height={400} width={400} className="rounded-full"   src="/utss.png.png"/>
-         <p className="flex font-bold text-2xl ml-[-10px] mt-[-40px] text-black/75 items-center ">UNCLE TEE SCIENCE SCHOOLS</p>
+         <Image  alt="UNCLE TEE LOGO" height={400} width={400} className="rounded-full pointer-events-none "   src="/utss.png.png"/>
+         <p className="flex font-bold text-2xl ml-[-10px] mt-[-40px] text-black/75 items-center pointer-events-none ">UNCLE TEE SCIENCE SCHOOLS</p>
      <div className=" h-5"/>
      <Input 
      className=" text-zinc-900 border border-zinc-200  "

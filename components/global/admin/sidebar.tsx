@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button";
-import { ChevronRight, LogOutIcon, Plus } from "lucide-react";
+import { ChevronRight, LogOutIcon } from "lucide-react";
 import {
   Dialog,
   DialogClose,

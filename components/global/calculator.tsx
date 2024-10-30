@@ -7,12 +7,12 @@ export default function Calculator() {
   const [result, setResult] = useState('');
   const [expression, setExpression] = useState('');
 
-  const handleButtonClick = (value: any) => {
+  const handleButtonClick = (value) => {
     if (value === '=') {
       try {
         setResult(eval(expression).toString());
       } catch (error) {
-        setResult('Syntax Error');
+        setResult('Syntax Error',error);
       }
     } else if (value === 'C') {
       setResult('');

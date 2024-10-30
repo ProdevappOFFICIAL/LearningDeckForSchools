@@ -13,7 +13,8 @@ interface SidebarItemProps {
 
  const SidebarItem = ({
   icon: Icon,
-  label: String,
+
+  
   href,
 }: SidebarItemProps) => {
   const pathname = usePathname();

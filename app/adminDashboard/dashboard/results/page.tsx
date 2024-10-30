@@ -1,8 +1,9 @@
-"use client"
+"use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import ResultModal from "@/components/global/admin/result_modal";
+
 
 const Result: React.FC = () => {
     const [results, setResults] = useState<ResultData[]>([]);
@@ -12,6 +13,9 @@ const Result: React.FC = () => {
     const [selectedResult, setSelectedResult] = useState<ResultData | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClass, setSelectedClass] = useState<string>("");
+    
+   
+    
 
     useEffect(() => {
         async function getAllResults() {
@@ -20,11 +24,11 @@ const Result: React.FC = () => {
                 const fetchedResults = response.data.Result || response.data;
                 if (Array.isArray(fetchedResults)) {
                     setResults(fetchedResults);
-                    setFilteredResults(fetchedResults); // Show all initially
+                    setFilteredResults(fetchedResults); 
                 } else {
                     setError("Unexpected data format.");
                 }
-            } catch (err: any) {
+            } catch (err) {
                 setError(err.response?.data?.message || "Failed to fetch results.");
             } finally {
                 setLoading(false);
@@ -49,80 +53,70 @@ const Result: React.FC = () => {
     const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selected = e.target.value;
         setSelectedClass(selected);
-        if (selected) {
-            setFilteredResults(results.filter((result) => result.classname === selected));
-        } else {
-            setFilteredResults(results); // Show all if no class is selected
-        }
+        setFilteredResults(selected ? results.filter((result) => result.classname === selected) : results);
     };
 
     if (loading) return <div>Loading...</div>;
     if (error) return <div className="text-red-600">{error}</div>;
 
     return (
-        <><div className="flex flex-row px-4 pt-4 mb-4 justify-between bg-zinc-200/20  border-b w-full">   <h2 className="text-2xl font-bold text-center mb-6">Exam Results</h2>
-
-            {/* Class Selection Dropdown */}
-            <div className="mb-4 text-center">
-               
-                <select
-                    id="classSelect"
-                    value={selectedClass}
-                    onChange={handleClassChange}
-                    className="p-2 border rounded"
-                >
-                    <option value="">All Classes</option>
-                    <option value="js1">JS1</option>
-                    <option value="js2">JS2</option>
-                    <option value="js3">JS3</option>
-                    <option value="ss1">SS1</option>
-                    <option value="ss2">SS2</option>
-                    <option value="ss3">SS3</option>
-                </select>
-            </div></div><div className="container mx-auto p-4">
-
-
-                <div className="overflow-x-auto">
+        <>
+            <div className="flex flex-row px-4 pt-4 mb-4 justify-between bg-zinc-200/20 border-b w-full">
+                <h2 className="text-2xl font-bold text-center mb-6">Exam Results</h2>
+                <div className="mb-4 text-center">
+                   
+                    <select
+                        id="classSelect"
+                        value={selectedClass}
+                        onChange={handleClassChange}
+                        className="p-2 border rounded"
+                    >
+                        <option value="">All Classes</option>
+                        <option value="js1">JS1</option>
+                        <option value="js2">JS2</option>
+                        <option value="js3">JS3</option>
+                        <option value="ss1">SS1</option>
+                        <option value="ss2">SS2</option>
+                        <option value="ss3">SS3</option>
+                    </select>
+                </div>
+            </div>
+            <div className="container mx-auto p-4">
+                <div className="overflow-x-auto" >
                     <table className="min-w-full bg-white border border-gray-200">
                         <thead>
                             <tr className="bg-gray-100">
-                                <th className="px-4 py-2 border">Profile</th>
+                                <th className="px-4 py-2 border hidden">Profile</th>
                                 <th className="px-4 py-2 border">Username</th>
                                 <th className="px-4 py-2 border">Class</th>
                                 <th className="px-4 py-2 border">Exam-Name</th>
                                 <th className="px-4 py-2 border">Overall Score</th>
                                 <th className="px-4 py-2 border">Subject Scores</th>
-
                                 <th className="px-4 py-2 border">Questions Attempted</th>
                                 <th className="px-4 py-2 border">Actions</th>
-                                
                             </tr>
-                            
                         </thead>
                         <tbody>
                             {filteredResults.length > 0 ? (
                                 filteredResults.map((data) => (
                                     <tr key={data.id} className="hover:bg-gray-50">
-                                        <td className="py-2 px-4 border-b">
+                                        <td className="py-2 px-4 border-b hidden">
                                             <Image
                                                 width={50}
                                                 height={50}
                                                 src={`/students/${data.full_name}.png`}
                                                 className="rounded-full border border-green-600"
                                                 alt="Student profile"
-                                                onError={(e) => {
-                                                    e.currentTarget.src = "/default-profile.png";
-                                                } } />
+                                                onError={(e) => { e.currentTarget.src = "/default-profile.png"; }}
+                                            />
                                         </td>
                                         <td className="py-2 px-4 border-b">{data.username}</td>
                                         <td className="py-2 px-4 border-b uppercase">{data.classname}</td>
                                         <td className="py-2 px-4 border-b">{data.exam_name}</td>
-
                                         <td className="py-2 px-4 border-b font-bold text-green-600">{data.overallScore}%</td>
                                         <td className="py-2 px-4 border-b">
-                                           
                                             {Object.entries(data.subjectScores).map(([subject, score]) => (
-                                                <div key={subject} className=" border p-1 text-sm">
+                                                <div key={subject} className="border p-1 text-sm">
                                                     {subject}: {score.correct}/{score.total}
                                                 </div>
                                             ))}
@@ -142,17 +136,15 @@ const Result: React.FC = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan={7} className="text-center py-4">
-                                        No results to display.
-                                    </td>
+                                    <td colSpan={7} className="text-center py-4">No results to display.</td>
                                 </tr>
                             )}
                         </tbody>
                     </table>
                 </div>
-
                 <ResultModal isOpen={isModalOpen} onClose={closeModal} result={selectedResult} />
-            </div></>
+            </div>
+        </>
     );
 };
 

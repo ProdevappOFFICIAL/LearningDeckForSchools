@@ -1,4 +1,4 @@
-import Sidebar from "@/components/global/sidebar";
+
 
 const DashLay = (
     {children}: {

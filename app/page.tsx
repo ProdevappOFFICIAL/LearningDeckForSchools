@@ -2,7 +2,6 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { MoonLoader, RiseLoader, RotateLoader } from "react-spinners";
 
 const Splash_page = () => {
 const router = useRouter();
@@ -10,7 +9,7 @@ const router = useRouter();
   useEffect(() => {
     setTimeout(() => {
       router.push('/auth')
-    }, 10000);
+    }, 0);
   })
   return ( 
     <div className=" flex flex-col h-screen w-screen items-center justify-center bg-green-600">
