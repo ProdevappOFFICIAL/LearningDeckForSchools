@@ -1,7 +1,7 @@
 {
   "Batch": [
     {
-      "batch_no": "1",
+      "batch_no": "2",
       "id": "1"
     }
   ],
@@ -127,100 +127,9 @@
         "English language"
       ],
       "correct_answer": "Civic Education",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "2",
-      "question": "________is a state of uprightness and open mindedness in our dealing and relationship with people.",
-      "incorrect_answers": [
-        "Cooperation",
-        "Self reliance",
-        "Justice"
-      ],
-      "correct_answer": "Honesty",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "4",
-      "question": "Acceptable values in the society include all these except.",
-      "incorrect_answers": [
-        "Honesty",
-        "Hand work",
-        "Co-operations"
-      ],
-      "correct_answer": "Selfishness",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "5",
-      "question": "Civic Education is concerned about _______",
-      "incorrect_answers": [
-        "War",
-        "Man",
-        "Trade"
-      ],
-      "correct_answer": "Society",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "6",
-      "question": "The following are positive types of attitude to work except.",
-      "incorrect_answers": [
-        "Dedication",
-        "Efficiency",
-        "Commitment"
-      ],
-      "correct_answer": "Laissez-faire",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "7",
-      "question": "________means protecting oneself against external or internal attack.",
-      "incorrect_answers": [
-        "Fighting",
-        "Bullying",
-        "Hostility"
-      ],
-      "correct_answer": "Self defense",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "8",
-      "question": "Social clubs students are expose to in school to protect themselves are the following except",
-      "incorrect_answers": [
-        "Man o war",
-        "Press club",
-        "Girls' brigade"
-      ],
-      "correct_answer": "Cult",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "9",
-      "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
-      "incorrect_answers": [
-        "Going to church",
-        "Looting",
-        "Fighting"
-      ],
-      "correct_answer": "Communal service",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "10",
@@ -231,9 +140,9 @@
         "Forced"
       ],
       "correct_answer": "Voluntary",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "11",
@@ -244,22 +153,8 @@
         "Discipline"
       ],
       "correct_answer": "Self reliance",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "1",
-      "question": "________is a subject that is meant to expose and create awareness in students at all levels of education.",
-      "incorrect_answers": [
-        "Biology",
-        "Physics",
-        "English language"
-      ],
-      "correct_answer": "Civic Education",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "civic"
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "2",
@@ -270,9 +165,22 @@
         "Justice"
       ],
       "correct_answer": "Honesty",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "civic"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "3",
+      "question": "The worth,merit or esteem which individual, a person,or group of people have for an idea or an object.",
+      "incorrect_answers": [
+        "Discipline",
+        "Hard work",
+        "Honesty"
+      ],
+      "correct_answer": "Value",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "4",
@@ -283,9 +191,9 @@
         "Co-operations"
       ],
       "correct_answer": "Selfishness",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "civic"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "5",
@@ -296,9 +204,9 @@
         "Trade"
       ],
       "correct_answer": "Society",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "civic"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "6",
@@ -309,61 +217,9 @@
         "Commitment"
       ],
       "correct_answer": "Laissez-faire",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "civic"
-    },
-    {
-      "id": "1",
-      "question": "________is a subject that is meant to expose and create awareness in students at all levels of education.",
-      "incorrect_answers": [
-        "Biology",
-        "Physics",
-        "English language"
-      ],
-      "correct_answer": "Civic Education",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "4",
-      "question": "Acceptable values in the society include all these except.",
-      "incorrect_answers": [
-        "Honesty",
-        "Hand work",
-        "Co-operations"
-      ],
-      "correct_answer": "Selfishness",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "5",
-      "question": "Civic Education is concerned about _______",
-      "incorrect_answers": [
-        "War",
-        "Man",
-        "Trade"
-      ],
-      "correct_answer": "Society",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
-    },
-    {
-      "id": "6",
-      "question": "The following are positive types of attitude to work except.",
-      "incorrect_answers": [
-        "Dedication",
-        "Efficiency",
-        "Commitment"
-      ],
-      "correct_answer": "Laissez-faire",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "7",
@@ -374,9 +230,9 @@
         "Hostility"
       ],
       "correct_answer": "Self defense",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "8",
@@ -387,9 +243,9 @@
         "Girls' brigade"
       ],
       "correct_answer": "Cult",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "9",
@@ -400,9 +256,126 @@
         "Fighting"
       ],
       "correct_answer": "Communal service",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "1",
+      "question": "________is a subject that is meant to expose and create awareness in students at all levels of education.",
+      "incorrect_answers": [
+        "Biology",
+        "Physics",
+        "English language"
+      ],
+      "correct_answer": "Civic Education",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "2",
+      "question": "________is a state of uprightness and open mindedness in our dealing and relationship with people.",
+      "incorrect_answers": [
+        "Cooperation",
+        "Self reliance",
+        "Justice"
+      ],
+      "correct_answer": "Honesty",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "3",
+      "question": "The worth,merit or esteem which individual, a person,or group of people have for an idea or an object.",
+      "incorrect_answers": [
+        "Discipline",
+        "Hard work",
+        "Honesty"
+      ],
+      "correct_answer": "Value",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "4",
+      "question": "Acceptable values in the society include all these except.",
+      "incorrect_answers": [
+        "Honesty",
+        "Hand work",
+        "Co-operations"
+      ],
+      "correct_answer": "Selfishness",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "5",
+      "question": "Civic Education is concerned about _______",
+      "incorrect_answers": [
+        "War",
+        "Man",
+        "Trade"
+      ],
+      "correct_answer": "Society",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "6",
+      "question": "The following are positive types of attitude to work except.",
+      "incorrect_answers": [
+        "Dedication",
+        "Efficiency",
+        "Commitment"
+      ],
+      "correct_answer": "Laissez-faire",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "7",
+      "question": "________means protecting oneself against external or internal attack.",
+      "incorrect_answers": [
+        "Fighting",
+        "Bullying",
+        "Hostility"
+      ],
+      "correct_answer": "Self defense",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "8",
+      "question": "Social clubs students are expose to in school to protect themselves are the following except",
+      "incorrect_answers": [
+        "Man o war",
+        "Press club",
+        "Girls' brigade"
+      ],
+      "correct_answer": "Cult",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "9",
+      "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
+      "incorrect_answers": [
+        "Going to church",
+        "Looting",
+        "Fighting"
+      ],
+      "correct_answer": "Communal service",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "10",
@@ -413,9 +386,9 @@
         "Forced"
       ],
       "correct_answer": "Voluntary",
-      "class_name": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subject": "math"
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
     },
     {
       "id": "11",
@@ -426,6 +399,445 @@
         "Discipline"
       ],
       "correct_answer": "Self reliance",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "1",
+      "question": "________is a subject that is meant to expose and create awareness in students at all levels of education.",
+      "incorrect_answers": [
+        "Biology",
+        "Physics",
+        "English language"
+      ],
+      "correct_answer": "Civic Education",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "2",
+      "question": "________is a state of uprightness and open mindedness in our dealing and relationship with people.",
+      "incorrect_answers": [
+        "Cooperation",
+        "Self reliance",
+        "Justice"
+      ],
+      "correct_answer": "Honesty",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "3",
+      "question": "The worth,merit or esteem which individual, a person,or group of people have for an idea or an object.",
+      "incorrect_answers": [
+        "Discipline",
+        "Hard work",
+        "Honesty"
+      ],
+      "correct_answer": "Value",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "4",
+      "question": "Acceptable values in the society include all these except.",
+      "incorrect_answers": [
+        "Honesty",
+        "Hand work",
+        "Co-operations"
+      ],
+      "correct_answer": "Selfishness",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "5",
+      "question": "Civic Education is concerned about _______",
+      "incorrect_answers": [
+        "War",
+        "Man",
+        "Trade"
+      ],
+      "correct_answer": "Society",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "6",
+      "question": "The following are positive types of attitude to work except.",
+      "incorrect_answers": [
+        "Dedication",
+        "Efficiency",
+        "Commitment"
+      ],
+      "correct_answer": "Laissez-faire",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "7",
+      "question": "________means protecting oneself against external or internal attack.",
+      "incorrect_answers": [
+        "Fighting",
+        "Bullying",
+        "Hostility"
+      ],
+      "correct_answer": "Self defense",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "8",
+      "question": "Social clubs students are expose to in school to protect themselves are the following except",
+      "incorrect_answers": [
+        "Man o war",
+        "Press club",
+        "Girls' brigade"
+      ],
+      "correct_answer": "Cult",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "9",
+      "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
+      "incorrect_answers": [
+        "Going to church",
+        "Looting",
+        "Fighting"
+      ],
+      "correct_answer": "Communal service",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "10",
+      "question": "Community services is a_______work",
+      "incorrect_answers": [
+        "Church",
+        "School",
+        "Forced"
+      ],
+      "correct_answer": "Voluntary",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "11",
+      "question": "The situation of being free from other people in setting of goals is called______",
+      "incorrect_answers": [
+        "Patriotism",
+        "Justice",
+        "Discipline"
+      ],
+      "correct_answer": "Self reliance",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "1",
+      "question": "________is a subject that is meant to expose and create awareness in students at all levels of education.",
+      "incorrect_answers": [
+        "Biology",
+        "Physics",
+        "English language"
+      ],
+      "correct_answer": "Civic Education",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "2",
+      "question": "________is a state of uprightness and open mindedness in our dealing and relationship with people.",
+      "incorrect_answers": [
+        "Cooperation",
+        "Self reliance",
+        "Justice"
+      ],
+      "correct_answer": "Honesty",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "3",
+      "question": "The worth,merit or esteem which individual, a person,or group of people have for an idea or an object.",
+      "incorrect_answers": [
+        "Discipline",
+        "Hard work",
+        "Honesty"
+      ],
+      "correct_answer": "Value",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "4",
+      "question": "Acceptable values in the society include all these except.",
+      "incorrect_answers": [
+        "Honesty",
+        "Hand work",
+        "Co-operations"
+      ],
+      "correct_answer": "Selfishness",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "5",
+      "question": "Civic Education is concerned about _______",
+      "incorrect_answers": [
+        "War",
+        "Man",
+        "Trade"
+      ],
+      "correct_answer": "Society",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "6",
+      "question": "The following are positive types of attitude to work except.",
+      "incorrect_answers": [
+        "Dedication",
+        "Efficiency",
+        "Commitment"
+      ],
+      "correct_answer": "Laissez-faire",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "7",
+      "question": "________means protecting oneself against external or internal attack.",
+      "incorrect_answers": [
+        "Fighting",
+        "Bullying",
+        "Hostility"
+      ],
+      "correct_answer": "Self defense",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "8",
+      "question": "Social clubs students are expose to in school to protect themselves are the following except",
+      "incorrect_answers": [
+        "Man o war",
+        "Press club",
+        "Girls' brigade"
+      ],
+      "correct_answer": "Cult",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "9",
+      "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
+      "incorrect_answers": [
+        "Going to church",
+        "Looting",
+        "Fighting"
+      ],
+      "correct_answer": "Communal service",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "10",
+      "question": "Community services is a_______work",
+      "incorrect_answers": [
+        "Church",
+        "School",
+        "Forced"
+      ],
+      "correct_answer": "Voluntary",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "11",
+      "question": "The situation of being free from other people in setting of goals is called______",
+      "incorrect_answers": [
+        "Patriotism",
+        "Justice",
+        "Discipline"
+      ],
+      "correct_answer": "Self reliance",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "1",
+      "question": "________is a subject that is meant to expose and create awareness in students at all levels of education.",
+      "incorrect_answers": [
+        "Biology",
+        "Physics",
+        "English language"
+      ],
+      "correct_answer": "Civic Education",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "2",
+      "question": "________is a state of uprightness and open mindedness in our dealing and relationship with people.",
+      "incorrect_answers": [
+        "Cooperation",
+        "Self reliance",
+        "Justice"
+      ],
+      "correct_answer": "Honesty",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "3",
+      "question": "The worth,merit or esteem which individual, a person,or group of people have for an idea or an object.",
+      "incorrect_answers": [
+        "Discipline",
+        "Hard work",
+        "Honesty"
+      ],
+      "correct_answer": "Value",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "4",
+      "question": "Acceptable values in the society include all these except.",
+      "incorrect_answers": [
+        "Honesty",
+        "Hand work",
+        "Co-operations"
+      ],
+      "correct_answer": "Selfishness",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "5",
+      "question": "Civic Education is concerned about _______",
+      "incorrect_answers": [
+        "War",
+        "Man",
+        "Trade"
+      ],
+      "correct_answer": "Society",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "6",
+      "question": "The following are positive types of attitude to work except.",
+      "incorrect_answers": [
+        "Dedication",
+        "Efficiency",
+        "Commitment"
+      ],
+      "correct_answer": "Laissez-faire",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "7",
+      "question": "________means protecting oneself against external or internal attack.",
+      "incorrect_answers": [
+        "Fighting",
+        "Bullying",
+        "Hostility"
+      ],
+      "correct_answer": "Self defense",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "8",
+      "question": "Social clubs students are expose to in school to protect themselves are the following except",
+      "incorrect_answers": [
+        "Man o war",
+        "Press club",
+        "Girls' brigade"
+      ],
+      "correct_answer": "Cult",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "9",
+      "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
+      "incorrect_answers": [
+        "Going to church",
+        "Looting",
+        "Fighting"
+      ],
+      "correct_answer": "Communal service",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "10",
+      "question": "Community services is a_______work",
+      "incorrect_answers": [
+        "Church",
+        "School",
+        "Forced"
+      ],
+      "correct_answer": "Voluntary",
+      "class_name": "SS1",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "11",
+      "question": "The situation of being free from other people in setting of goals is called______",
+      "incorrect_answers": [
+        "Patriotism",
+        "Justice",
+        "Discipline"
+      ],
+      "correct_answer": "Self reliance",
+      "subject": "math",
+      "exam_name": "SSS BATCH1"
+    },
+    {
+      "id": "1",
+      "exam_id": null,
+      "question": "Prudence is a boy",
+      "incorrect_answers": [
+        "Yes",
+        "No",
+        "Maybe not"
+      ],
+      "correct_answer": "Yes",
       "class_name": "ss1",
       "exam_name": "SSS BATCH1",
       "subject": "math"
@@ -433,1833 +845,157 @@
   ],
   "Result": [
     {
-      "id": "26e5",
-      "overallScore": 5,
+      "id": "4b0f",
+      "overallScore": 2,
       "full_name": "OLASOJI",
       "username": "OLASOJI-AYENI DAVID AYOMI",
       "classname": "ss1",
       "exam_name": "SSS BATCH1",
       "subjectScores": {
-        "civic": {
-          "correct": 5,
-          "total": 39
+        "math": {
+          "correct": 2,
+          "total": 6
         }
       },
       "questions": [
         {
-          "id": "1",
-          "question": "Acceptable values in the society include all these except.",
+          "id": "11",
+          "question": "The situation of being free from other people in setting of goals is called______",
           "incorrect_answers": [
-            "Honesty",
-            "Hand work",
-            "Co-operations"
+            "Patriotism",
+            "Justice",
+            "Discipline"
           ],
-          "correct_answer": "Selfishness",
-          "class_name": "ss1",
+          "correct_answer": "Self reliance",
+          "subject": "math",
           "exam_name": "SSS BATCH1",
-          "subject": "civic",
           "_id": 1,
           "visited": false,
           "attempted": true,
-          "userOption": 0,
+          "userOption": 3,
           "options": [
-            "Hand work",
-            "Honesty",
-            "Selfishness",
-            "Co-operations"
-          ]
-        },
-        {
-          "id": "3",
-          "question": "The following are positive types of attitude to work except.",
-          "incorrect_answers": [
-            "Dedication",
-            "Efficiency",
-            "Commitment"
-          ],
-          "correct_answer": "Laissez-faire",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 2,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Commitment",
-            "Efficiency",
-            "Dedication",
-            "Laissez-faire"
-          ]
-        },
-        {
-          "id": "4",
-          "question": "________means protecting oneself against external or internal attack.",
-          "incorrect_answers": [
-            "Fighting",
-            "Bullying",
-            "Hostility"
-          ],
-          "correct_answer": "Self defense",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 3,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Bullying",
-            "Fighting",
-            "Self defense",
-            "Hostility"
-          ]
-        },
-        {
-          "id": "5",
-          "question": "Social clubs students are expose to in school to protect themselves are the following except",
-          "incorrect_answers": [
-            "Man o war",
-            "Press club",
-            "Girls' brigade"
-          ],
-          "correct_answer": "Cult",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 4,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Girls' brigade",
-            "Press club",
-            "Cult",
-            "Man o war"
-          ]
-        },
-        {
-          "id": "6",
-          "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
-          "incorrect_answers": [
-            "Going to church",
-            "Looting",
-            "Fighting"
-          ],
-          "correct_answer": "Communal service",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 5,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Going to church",
-            "Looting",
-            "Communal service",
-            "Fighting"
-          ]
-        },
-        {
-          "id": "7",
-          "question": "Community services is a_______work",
-          "incorrect_answers": [
-            "Church",
-            "School",
-            "Forced"
-          ],
-          "correct_answer": "Voluntary",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 6,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Voluntary",
-            "Forced",
-            "School",
-            "Church"
-          ]
-        },
-        {
-          "id": "9",
-          "question": "is a basic fact that needs to undergo processing.",
-          "incorrect_answers": [
-            "Information",
-            "Output",
-            "Input"
-          ],
-          "correct_answer": "Data",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 7,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Information",
-            "Input",
-            "Output",
-            "Data"
-          ]
-        },
-        {
-          "id": "10",
-          "question": "The methodology of converting data into information is",
-          "incorrect_answers": [
-            "data and information",
-            "decision making",
-            "none of the above"
-          ],
-          "correct_answer": "data processing",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 8,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "data and information",
-            "decision making",
-            "none of the above",
-            "data processing"
+            "Self reliance",
+            "Justice",
+            "Discipline",
+            "Patriotism"
           ]
         },
         {
           "id": "11",
-          "question": "The major reason for data processing is",
+          "question": "The situation of being free from other people in setting of goals is called______",
           "incorrect_answers": [
-            "conflict promotion",
-            "information generation",
-            "data manipulation"
+            "Patriotism",
+            "Justice",
+            "Discipline"
           ],
-          "correct_answer": "decision making",
-          "class_name": "ss1",
+          "correct_answer": "Self reliance",
+          "subject": "math",
           "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 9,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "information generation",
-            "data manipulation",
-            "conflict promotion",
-            "decision making"
-          ]
-        },
-        {
-          "id": "12",
-          "question": "In data processing, input activity involves",
-          "incorrect_answers": [
-            "Collection",
-            "Verification",
-            "Coding"
-          ],
-          "correct_answer": "Retrieving",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 10,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Collection",
-            "Verification",
-            "Coding",
-            "Retrieving"
-          ]
-        },
-        {
-          "id": "13",
-          "question": "One of these is not data property",
-          "incorrect_answers": [
-            "presentation",
-            "collection",
-            "accuracy"
-          ],
-          "correct_answer": "misuse",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 11,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "collection",
-            "presentation",
-            "accuracy",
-            "misuse"
-          ]
-        },
-        {
-          "id": "14",
-          "question": "Napiers  Bones had ……..",
-          "incorrect_answers": [
-            "9 rods",
-            "10 rods",
-            "12 rods"
-          ],
-          "correct_answer": "11 rods",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 12,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "9 rods",
-            "11 rods",
-            "10 rods",
-            "12 rods"
-          ]
-        },
-        {
-          "id": "15",
-          "question": "Jacquards loom was used in the  ……",
-          "incorrect_answers": [
-            "mechanical industry",
-            "food industry",
-            "all of the above"
-          ],
-          "correct_answer": "weaving industry",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 13,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "all of the above",
-            "mechanical industry",
-            "weaving industry",
-            "food industry"
-          ]
-        },
-        {
-          "id": "16",
-          "question": "……. was the first calculating device.",
-          "incorrect_answers": [
-            "Napiers Bones",
-            "Punched card",
-            "Slide rule"
-          ],
-          "correct_answer": "Abacus",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 14,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Napiers Bones",
-            "Punched card",
-            "Slide rule",
-            "Abacus"
-          ]
-        },
-        {
-          "id": "17",
-          "question": "Fourth generation computers made use of …………",
-          "incorrect_answers": [
-            "Transistors",
-            "AI",
-            "UNIVAC"
-          ],
-          "correct_answer": "VLSI",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 15,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "UNIVAC",
-            "AI",
-            "Transistors",
-            "VLSI"
-          ]
-        },
-        {
-          "id": "18",
-          "question": "Fifth generation made use of ………………",
-          "incorrect_answers": [
-            "Vacuum tubes.",
-            "SSI",
-            "VLSI"
-          ],
-          "correct_answer": "AI",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 16,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "AI",
-            "Vacuum tubes.",
-            "SSI",
-            "VLSI"
-          ]
-        },
-        {
-          "id": "19",
-          "question": "The branch of agriculture that promotes the conservation of forest products, wildlife and also creation for micro climate is called ?",
-          "incorrect_answers": [
-            "Crop production",
-            "Animal science",
-            "Agricultural extension & education"
-          ],
-          "correct_answer": "Forestry and wildlife conservation",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 17,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Crop production",
-            "Agricultural extension & education",
-            "Animal science",
-            "Forestry and wildlife conservation"
-          ]
-        },
-        {
-          "id": "20",
-          "question": "These are importance of agriculture except ?",
-          "incorrect_answers": [
-            "Provision of food",
-            "Provision of income",
-            "development of rural areas"
-          ],
-          "correct_answer": "Provision of vehicles",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 18,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "development of rural areas",
-            "Provision of food",
-            "Provision of income",
-            "Provision of vehicles"
-          ]
-        },
-        {
-          "id": "21",
-          "question": "All these are examples of complex farm machines except ?",
-          "incorrect_answers": [
-            "Bulldozers",
-            "Harvesters",
-            "Planters"
-          ],
-          "correct_answer": "Axes",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 19,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Bulldozers",
-            "Harvesters",
-            "Planters",
-            "Axes"
-          ]
-        },
-        {
-          "id": "22",
-          "question": "Ager means __",
-          "incorrect_answers": [
-            "Agriculture",
-            "Cultivation",
-            "Rearing"
-          ],
-          "correct_answer": "Field",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 20,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Rearing",
-            "Field",
-            "Cultivation",
-            "Agriculture"
-          ]
-        },
-        {
-          "id": "23",
-          "question": "___ is the art and science or management that deals with the cultivation of crops and the rearing of animals for mans use",
-          "incorrect_answers": [
-            "Planting",
-            "Farming",
-            "Production"
-          ],
-          "correct_answer": "Agriculture",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 21,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Production",
-            "Farming",
-            "Agriculture",
-            "Planting"
-          ]
-        },
-        {
-          "id": "24",
-          "question": "__ is the type of agriculture concerned with the production of food and cash crops in lage quantities",
-          "incorrect_answers": [
-            "Mixed agricultural",
-            "Subsistence agriculture",
-            "Shifting cultivation"
-          ],
-          "correct_answer": "Commercial agriculture",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 22,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Commercial agriculture",
-            "Shifting cultivation",
-            "Subsistence agriculture",
-            "Mixed agricultural"
-          ]
-        },
-        {
-          "id": "25",
-          "question": "All these are problems of agricultural development in Nigeria except ?",
-          "incorrect_answers": [
-            "poor marketing system",
-            "Transportation problem",
-            "Problems of pests and diseases"
-          ],
-          "correct_answer": "Economic development",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 23,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Economic development",
-            "Problems of pests and diseases",
-            "Transportation problem",
-            "poor marketing system"
-          ]
-        },
-        {
-          "id": "26",
-          "question": "All these are characteristics of subsistence agriculture except ?",
-          "incorrect_answers": [
-            "It is practiced on a small scale of land",
-            "It engages in mixed cropping",
-            "Family labour is used"
-          ],
-          "correct_answer": "It has access to credit facilities",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 24,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "It has access to credit facilities",
-            "It engages in mixed cropping",
-            "It is practiced on a small scale of land",
-            "Family labour is used"
-          ]
-        },
-        {
-          "id": "27",
-          "question": "All these are examples of government programmed for agricultural development in Nigeria except?",
-          "incorrect_answers": [
-            "DFRR",
-            "Extension services",
-            "Farms settlement schemes"
-          ],
-          "correct_answer": "NAFDAC",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 25,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "NAFDAC",
-            "Farms settlement schemes",
-            "Extension services",
-            "DFRR"
-          ]
-        },
-        {
-          "id": "28",
-          "question": "The branch of agriculture that deals with the production of honey for local consumption is called ?",
-          "incorrect_answers": [
-            "Horticulture",
-            "Heliculture",
-            "Entomology"
-          ],
-          "correct_answer": "Apiculture",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 26,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Apiculture",
-            "Entomology",
-            "Heliculture",
-            "Horticulture"
-          ]
-        },
-        {
-          "id": "29",
-          "question": "The study of Economics enables individual to.....",
-          "incorrect_answers": [
-            "Exchange jobs",
-            "Evade taxes",
-            "Accumulate wealth"
-          ],
-          "correct_answer": "Make rational decision",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 27,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Make rational decision",
-            "Accumulate wealth",
-            "Evade taxes",
-            "Exchange jobs"
-          ]
-        },
-        {
-          "id": "30",
-          "question": "Economics as a field of study is a ......",
-          "incorrect_answers": [
-            "Pure science",
-            "Political science",
-            "Physical science"
-          ],
-          "correct_answer": "Social science",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 28,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Social science",
-            "Physical science",
-            "Political science",
-            "Pure science"
-          ]
-        },
-        {
-          "id": "32",
-          "question": "Which of the following is not a fundamental economic problem?",
-          "incorrect_answers": [
-            "What to produce?",
-            "Method of production",
-            "For whom to produce?"
-          ],
-          "correct_answer": "How to enjoy production",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 29,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Method of production",
-            "What to produce?",
-            "How to enjoy production",
-            "For whom to produce?"
-          ]
-        },
-        {
-          "id": "33",
-          "question": "Economic problem arises because",
-          "incorrect_answers": [
-            "Money is scarce",
-            "Resources are scarce relative to wants",
-            "Man engages in so many economic activities"
-          ],
-          "correct_answer": "Man is insatiable",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 30,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Man engages in so many economic activities",
-            "Money is scarce",
-            "Man is insatiable",
-            "Resources are scarce relative to wants"
-          ]
-        },
-        {
-          "id": "34",
-          "question": "Scarcity refers to.....",
-          "incorrect_answers": [
-            "Period of production",
-            "Limited resources",
-            "The control of resources"
-          ],
-          "correct_answer": "The absence of goods in the market.",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 31,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "The absence of goods in the market.",
-            "The control of resources",
-            "Limited resources",
-            "Period of production"
-          ]
-        },
-        {
-          "id": "35",
-          "question": "Which of the following tools of economic analysis is used when data contains more than one variable.",
-          "incorrect_answers": [
-            "Graph",
-            "Symbolical statement",
-            "Bar chart"
-          ],
-          "correct_answer": "Component bar chart",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 32,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Graph",
-            "Symbolical statement",
-            "Bar chart",
-            "Component bar chart"
-          ]
-        },
-        {
-          "id": "37",
-          "question": "_________ are unmanned aerial vehicles that are remotely operated or autonomously programmed to perform specific tasks.",
-          "incorrect_answers": [
-            "Toyota car",
-            "Lexus",
-            "none"
-          ],
-          "correct_answer": "Drone",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 33,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Toyota car",
-            "Lexus",
-            "Drone",
-            "none"
-          ]
-        },
-        {
-          "id": "38",
-          "question": "Drones are capable of the following except",
-          "incorrect_answers": [
-            "collecting data",
-            "delivery packages",
-            "conducting inspections"
-          ],
-          "correct_answer": "All of the above",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 34,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "All of the above",
-            "collecting data",
-            "delivery packages",
-            "conducting inspections"
-          ]
-        },
-        {
-          "id": "40",
-          "question": "Which of the following is a drone part",
-          "incorrect_answers": [
-            "arms",
-            "propeller",
-            "camera"
-          ],
-          "correct_answer": "mentor",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 35,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "arms",
-            "propeller",
-            "camera",
-            "mentor"
-          ]
-        },
-        {
-          "id": "41",
-          "question": "Which of the following is not part of the four basic movements of drone flight",
-          "incorrect_answers": [
-            "Throttle",
-            "yaw",
-            "Pitch"
-          ],
-          "correct_answer": "drum",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 36,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Throttle",
-            "yaw",
-            "Pitch",
-            "drum"
-          ]
-        },
-        {
-          "id": "42",
-          "question": "During the seminar a sample of a drone footage of a musician was shared as an example, what is the name of this musician",
-          "incorrect_answers": [
-            "Ayar star",
-            "Wizkid",
-            "Davido"
-          ],
-          "correct_answer": "Ayox",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 37,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Wizkid",
-            "Davido",
-            "Ayar star",
-            "Ayox"
-          ]
-        },
-        {
-          "id": "44",
-          "question": "When piloting a drone, we use the ______ to navigate the drone",
-          "incorrect_answers": [
-            "throttle",
-            "phone",
-            "none"
-          ],
-          "correct_answer": "controller",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 38,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "throttle",
-            "phone",
-            "none",
-            "controller"
-          ]
-        },
-        {
-          "id": "45",
-          "question": "To move from left to right without rotation we use",
-          "incorrect_answers": [
-            "yaw",
-            "pitch",
-            "throttle"
-          ],
-          "correct_answer": "roll",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 39,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "yaw",
-            "pitch",
-            "throttle",
-            "roll"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "8e43",
-      "overallScore": 11,
-      "full_name": "OLASOJI",
-      "username": "OLASOJI-AYENI DAVID AYOMI",
-      "classname": "ss1",
-      "exam_name": "SSS BATCH1",
-      "subjectScores": {
-        "civic": {
-          "correct": 11,
-          "total": 39
-        }
-      },
-      "questions": [
-        {
-          "id": "1",
-          "question": "Acceptable values in the society include all these except.",
-          "incorrect_answers": [
-            "Honesty",
-            "Hand work",
-            "Co-operations"
-          ],
-          "correct_answer": "Selfishness",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 1,
-          "visited": false,
-          "attempted": true,
-          "userOption": 0,
-          "options": [
-            "Honesty",
-            "Hand work",
-            "Co-operations",
-            "Selfishness"
-          ]
-        },
-        {
-          "id": "3",
-          "question": "The following are positive types of attitude to work except.",
-          "incorrect_answers": [
-            "Dedication",
-            "Efficiency",
-            "Commitment"
-          ],
-          "correct_answer": "Laissez-faire",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
           "_id": 2,
           "visited": false,
           "attempted": true,
           "userOption": 2,
           "options": [
-            "Dedication",
-            "Efficiency",
-            "Laissez-faire",
-            "Commitment"
+            "Patriotism",
+            "Self reliance",
+            "Justice",
+            "Discipline"
           ]
         },
         {
-          "id": "4",
-          "question": "________means protecting oneself against external or internal attack.",
+          "id": "11",
+          "question": "The situation of being free from other people in setting of goals is called______",
           "incorrect_answers": [
-            "Fighting",
-            "Bullying",
-            "Hostility"
+            "Patriotism",
+            "Justice",
+            "Discipline"
           ],
-          "correct_answer": "Self defense",
-          "class_name": "ss1",
+          "correct_answer": "Self reliance",
+          "subject": "math",
           "exam_name": "SSS BATCH1",
-          "subject": "civic",
           "_id": 3,
           "visited": false,
           "attempted": true,
           "userOption": 3,
           "options": [
-            "Fighting",
-            "Bullying",
-            "Hostility",
-            "Self defense"
+            "Patriotism",
+            "Self reliance",
+            "Justice",
+            "Discipline"
           ]
         },
         {
-          "id": "5",
-          "question": "Social clubs students are expose to in school to protect themselves are the following except",
+          "id": "11",
+          "question": "The situation of being free from other people in setting of goals is called______",
           "incorrect_answers": [
-            "Man o war",
-            "Press club",
-            "Girls' brigade"
+            "Patriotism",
+            "Justice",
+            "Discipline"
           ],
-          "correct_answer": "Cult",
-          "class_name": "ss1",
+          "correct_answer": "Self reliance",
+          "subject": "math",
           "exam_name": "SSS BATCH1",
-          "subject": "civic",
           "_id": 4,
           "visited": false,
           "attempted": true,
           "userOption": 3,
           "options": [
-            "Girls' brigade",
-            "Man o war",
-            "Cult",
-            "Press club"
-          ]
-        },
-        {
-          "id": "6",
-          "question": "_______is one of the selfless services that a responsible citizen must make themselves available and involved in.",
-          "incorrect_answers": [
-            "Going to church",
-            "Looting",
-            "Fighting"
-          ],
-          "correct_answer": "Communal service",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 5,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Going to church",
-            "Looting",
-            "Communal service",
-            "Fighting"
-          ]
-        },
-        {
-          "id": "7",
-          "question": "Community services is a_______work",
-          "incorrect_answers": [
-            "Church",
-            "School",
-            "Forced"
-          ],
-          "correct_answer": "Voluntary",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 6,
-          "visited": true,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Voluntary",
-            "School",
-            "Church",
-            "Forced"
-          ]
-        },
-        {
-          "id": "9",
-          "question": "is a basic fact that needs to undergo processing.",
-          "incorrect_answers": [
-            "Information",
-            "Output",
-            "Input"
-          ],
-          "correct_answer": "Data",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 7,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Input",
-            "Data",
-            "Output",
-            "Information"
-          ]
-        },
-        {
-          "id": "10",
-          "question": "The methodology of converting data into information is",
-          "incorrect_answers": [
-            "data and information",
-            "decision making",
-            "none of the above"
-          ],
-          "correct_answer": "data processing",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 8,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "data processing",
-            "data and information",
-            "decision making",
-            "none of the above"
+            "Patriotism",
+            "Justice",
+            "Discipline",
+            "Self reliance"
           ]
         },
         {
           "id": "11",
-          "question": "The major reason for data processing is",
+          "question": "The situation of being free from other people in setting of goals is called______",
           "incorrect_answers": [
-            "conflict promotion",
-            "information generation",
-            "data manipulation"
+            "Patriotism",
+            "Justice",
+            "Discipline"
           ],
-          "correct_answer": "decision making",
-          "class_name": "ss1",
+          "correct_answer": "Self reliance",
+          "subject": "math",
           "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 9,
+          "_id": 5,
           "visited": false,
           "attempted": true,
           "userOption": 2,
           "options": [
-            "conflict promotion",
-            "information generation",
-            "data manipulation",
-            "decision making"
+            "Discipline",
+            "Self reliance",
+            "Justice",
+            "Patriotism"
           ]
         },
         {
-          "id": "12",
-          "question": "In data processing, input activity involves",
+          "id": "1",
+          "exam_id": null,
+          "question": "Prudence is a boy",
           "incorrect_answers": [
-            "Collection",
-            "Verification",
-            "Coding"
+            "Yes",
+            "No",
+            "Maybe not"
           ],
-          "correct_answer": "Retrieving",
+          "correct_answer": "Yes",
           "class_name": "ss1",
           "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 10,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Verification",
-            "Collection",
-            "Coding",
-            "Retrieving"
-          ]
-        },
-        {
-          "id": "13",
-          "question": "One of these is not data property",
-          "incorrect_answers": [
-            "presentation",
-            "collection",
-            "accuracy"
-          ],
-          "correct_answer": "misuse",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 11,
+          "subject": "math",
+          "_id": 6,
           "visited": false,
           "attempted": true,
-          "userOption": 2,
+          "userOption": 0,
           "options": [
-            "collection",
-            "accuracy",
-            "misuse",
-            "presentation"
-          ]
-        },
-        {
-          "id": "14",
-          "question": "Napiers  Bones had ……..",
-          "incorrect_answers": [
-            "9 rods",
-            "10 rods",
-            "12 rods"
-          ],
-          "correct_answer": "11 rods",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 12,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "9 rods",
-            "10 rods",
-            "12 rods",
-            "11 rods"
-          ]
-        },
-        {
-          "id": "15",
-          "question": "Jacquards loom was used in the  ……",
-          "incorrect_answers": [
-            "mechanical industry",
-            "food industry",
-            "all of the above"
-          ],
-          "correct_answer": "weaving industry",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 13,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "mechanical industry",
-            "food industry",
-            "weaving industry",
-            "all of the above"
-          ]
-        },
-        {
-          "id": "16",
-          "question": "……. was the first calculating device.",
-          "incorrect_answers": [
-            "Napiers Bones",
-            "Punched card",
-            "Slide rule"
-          ],
-          "correct_answer": "Abacus",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 14,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Abacus",
-            "Slide rule",
-            "Punched card",
-            "Napiers Bones"
-          ]
-        },
-        {
-          "id": "17",
-          "question": "Fourth generation computers made use of …………",
-          "incorrect_answers": [
-            "Transistors",
-            "AI",
-            "UNIVAC"
-          ],
-          "correct_answer": "VLSI",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 15,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "VLSI",
-            "UNIVAC",
-            "AI",
-            "Transistors"
-          ]
-        },
-        {
-          "id": "18",
-          "question": "Fifth generation made use of ………………",
-          "incorrect_answers": [
-            "Vacuum tubes.",
-            "SSI",
-            "VLSI"
-          ],
-          "correct_answer": "AI",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 16,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Vacuum tubes.",
-            "SSI",
-            "VLSI",
-            "AI"
-          ]
-        },
-        {
-          "id": "19",
-          "question": "The branch of agriculture that promotes the conservation of forest products, wildlife and also creation for micro climate is called ?",
-          "incorrect_answers": [
-            "Crop production",
-            "Animal science",
-            "Agricultural extension & education"
-          ],
-          "correct_answer": "Forestry and wildlife conservation",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 17,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Crop production",
-            "Animal science",
-            "Agricultural extension & education",
-            "Forestry and wildlife conservation"
-          ]
-        },
-        {
-          "id": "20",
-          "question": "These are importance of agriculture except ?",
-          "incorrect_answers": [
-            "Provision of food",
-            "Provision of income",
-            "development of rural areas"
-          ],
-          "correct_answer": "Provision of vehicles",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 18,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "development of rural areas",
-            "Provision of vehicles",
-            "Provision of income",
-            "Provision of food"
-          ]
-        },
-        {
-          "id": "21",
-          "question": "All these are examples of complex farm machines except ?",
-          "incorrect_answers": [
-            "Bulldozers",
-            "Harvesters",
-            "Planters"
-          ],
-          "correct_answer": "Axes",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 19,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Planters",
-            "Bulldozers",
-            "Harvesters",
-            "Axes"
-          ]
-        },
-        {
-          "id": "22",
-          "question": "Ager means __",
-          "incorrect_answers": [
-            "Agriculture",
-            "Cultivation",
-            "Rearing"
-          ],
-          "correct_answer": "Field",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 20,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Field",
-            "Rearing",
-            "Cultivation",
-            "Agriculture"
-          ]
-        },
-        {
-          "id": "23",
-          "question": "___ is the art and science or management that deals with the cultivation of crops and the rearing of animals for mans use",
-          "incorrect_answers": [
-            "Planting",
-            "Farming",
-            "Production"
-          ],
-          "correct_answer": "Agriculture",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 21,
-          "visited": true,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Agriculture",
-            "Production",
-            "Farming",
-            "Planting"
-          ]
-        },
-        {
-          "id": "24",
-          "question": "__ is the type of agriculture concerned with the production of food and cash crops in lage quantities",
-          "incorrect_answers": [
-            "Mixed agricultural",
-            "Subsistence agriculture",
-            "Shifting cultivation"
-          ],
-          "correct_answer": "Commercial agriculture",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 22,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Commercial agriculture",
-            "Shifting cultivation",
-            "Subsistence agriculture",
-            "Mixed agricultural"
-          ]
-        },
-        {
-          "id": "25",
-          "question": "All these are problems of agricultural development in Nigeria except ?",
-          "incorrect_answers": [
-            "poor marketing system",
-            "Transportation problem",
-            "Problems of pests and diseases"
-          ],
-          "correct_answer": "Economic development",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 23,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "poor marketing system",
-            "Transportation problem",
-            "Problems of pests and diseases",
-            "Economic development"
-          ]
-        },
-        {
-          "id": "26",
-          "question": "All these are characteristics of subsistence agriculture except ?",
-          "incorrect_answers": [
-            "It is practiced on a small scale of land",
-            "It engages in mixed cropping",
-            "Family labour is used"
-          ],
-          "correct_answer": "It has access to credit facilities",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 24,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "It is practiced on a small scale of land",
-            "It has access to credit facilities",
-            "It engages in mixed cropping",
-            "Family labour is used"
-          ]
-        },
-        {
-          "id": "27",
-          "question": "All these are examples of government programmed for agricultural development in Nigeria except?",
-          "incorrect_answers": [
-            "DFRR",
-            "Extension services",
-            "Farms settlement schemes"
-          ],
-          "correct_answer": "NAFDAC",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 25,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "DFRR",
-            "NAFDAC",
-            "Extension services",
-            "Farms settlement schemes"
-          ]
-        },
-        {
-          "id": "28",
-          "question": "The branch of agriculture that deals with the production of honey for local consumption is called ?",
-          "incorrect_answers": [
-            "Horticulture",
-            "Heliculture",
-            "Entomology"
-          ],
-          "correct_answer": "Apiculture",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 26,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Horticulture",
-            "Apiculture",
-            "Heliculture",
-            "Entomology"
-          ]
-        },
-        {
-          "id": "29",
-          "question": "The study of Economics enables individual to.....",
-          "incorrect_answers": [
-            "Exchange jobs",
-            "Evade taxes",
-            "Accumulate wealth"
-          ],
-          "correct_answer": "Make rational decision",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 27,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Exchange jobs",
-            "Evade taxes",
-            "Accumulate wealth",
-            "Make rational decision"
-          ]
-        },
-        {
-          "id": "30",
-          "question": "Economics as a field of study is a ......",
-          "incorrect_answers": [
-            "Pure science",
-            "Political science",
-            "Physical science"
-          ],
-          "correct_answer": "Social science",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 28,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Political science",
-            "Pure science",
-            "Social science",
-            "Physical science"
-          ]
-        },
-        {
-          "id": "32",
-          "question": "Which of the following is not a fundamental economic problem?",
-          "incorrect_answers": [
-            "What to produce?",
-            "Method of production",
-            "For whom to produce?"
-          ],
-          "correct_answer": "How to enjoy production",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 29,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "What to produce?",
-            "How to enjoy production",
-            "Method of production",
-            "For whom to produce?"
-          ]
-        },
-        {
-          "id": "33",
-          "question": "Economic problem arises because",
-          "incorrect_answers": [
-            "Money is scarce",
-            "Resources are scarce relative to wants",
-            "Man engages in so many economic activities"
-          ],
-          "correct_answer": "Man is insatiable",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 30,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "Man is insatiable",
-            "Resources are scarce relative to wants",
-            "Money is scarce",
-            "Man engages in so many economic activities"
-          ]
-        },
-        {
-          "id": "34",
-          "question": "Scarcity refers to.....",
-          "incorrect_answers": [
-            "Period of production",
-            "Limited resources",
-            "The control of resources"
-          ],
-          "correct_answer": "The absence of goods in the market.",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 31,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Limited resources",
-            "The absence of goods in the market.",
-            "Period of production",
-            "The control of resources"
-          ]
-        },
-        {
-          "id": "35",
-          "question": "Which of the following tools of economic analysis is used when data contains more than one variable.",
-          "incorrect_answers": [
-            "Graph",
-            "Symbolical statement",
-            "Bar chart"
-          ],
-          "correct_answer": "Component bar chart",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 32,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "Graph",
-            "Bar chart",
-            "Symbolical statement",
-            "Component bar chart"
-          ]
-        },
-        {
-          "id": "37",
-          "question": "_________ are unmanned aerial vehicles that are remotely operated or autonomously programmed to perform specific tasks.",
-          "incorrect_answers": [
-            "Toyota car",
-            "Lexus",
-            "none"
-          ],
-          "correct_answer": "Drone",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 33,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "none",
-            "Lexus",
-            "Drone",
-            "Toyota car"
-          ]
-        },
-        {
-          "id": "38",
-          "question": "Drones are capable of the following except",
-          "incorrect_answers": [
-            "collecting data",
-            "delivery packages",
-            "conducting inspections"
-          ],
-          "correct_answer": "All of the above",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 34,
-          "visited": false,
-          "attempted": true,
-          "userOption": 3,
-          "options": [
-            "collecting data",
-            "delivery packages",
-            "conducting inspections",
-            "All of the above"
-          ]
-        },
-        {
-          "id": "40",
-          "question": "Which of the following is a drone part",
-          "incorrect_answers": [
-            "arms",
-            "propeller",
-            "camera"
-          ],
-          "correct_answer": "mentor",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 35,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "camera",
-            "propeller",
-            "mentor",
-            "arms"
-          ]
-        },
-        {
-          "id": "41",
-          "question": "Which of the following is not part of the four basic movements of drone flight",
-          "incorrect_answers": [
-            "Throttle",
-            "yaw",
-            "Pitch"
-          ],
-          "correct_answer": "drum",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 36,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Throttle",
-            "yaw",
-            "Pitch",
-            "drum"
-          ]
-        },
-        {
-          "id": "42",
-          "question": "During the seminar a sample of a drone footage of a musician was shared as an example, what is the name of this musician",
-          "incorrect_answers": [
-            "Ayar star",
-            "Wizkid",
-            "Davido"
-          ],
-          "correct_answer": "Ayox",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 37,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "Ayar star",
-            "Wizkid",
-            "Davido",
-            "Ayox"
-          ]
-        },
-        {
-          "id": "44",
-          "question": "When piloting a drone, we use the ______ to navigate the drone",
-          "incorrect_answers": [
-            "throttle",
-            "phone",
-            "none"
-          ],
-          "correct_answer": "controller",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 38,
-          "visited": false,
-          "attempted": false,
-          "userOption": -1,
-          "options": [
-            "controller",
-            "none",
-            "phone",
-            "throttle"
-          ]
-        },
-        {
-          "id": "45",
-          "question": "To move from left to right without rotation we use",
-          "incorrect_answers": [
-            "yaw",
-            "pitch",
-            "throttle"
-          ],
-          "correct_answer": "roll",
-          "class_name": "ss1",
-          "exam_name": "SSS BATCH1",
-          "subject": "civic",
-          "_id": 39,
-          "visited": false,
-          "attempted": true,
-          "userOption": 2,
-          "options": [
-            "roll",
-            "yaw",
-            "pitch",
-            "throttle"
+            "Yes",
+            "Maybe not",
+            "No",
+            "Yes"
           ]
         }
       ]
     },
     {
-      "id": "bcf4",
+      "id": "e138",
       "overallScore": 0,
       "full_name": "OLASOJI",
       "username": "OLASOJI-AYENI DAVID AYOMI",
@@ -2534,57 +1270,6 @@
       "user_name": "OLADOKE ADEOLA OLUYEMI",
       "user_email": "UTSS/24/066",
       "user_password": "OLADOKE",
-      "class_name": "js2"
-    },
-    {
-      "id": "bd6b",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/5430",
-      "user_password": "PRUDENCE",
-      "class_name": "js1",
-      "img_name": "C:\\fakepath\\AKINLOLU.png"
-    },
-    {
-      "id": "3889",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/5430",
-      "user_password": "EMAH",
-      "class_name": "ss1"
-    },
-    {
-      "id": "4403",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/5432",
-      "user_password": "OYEWALE",
-      "class_name": "js1",
-      "img_name": "C:\\fakepath\\AKINLOLU.png"
-    },
-    {
-      "id": "",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/5430",
-      "user_password": "OLASOJI",
-      "class_name": "ss3"
-    },
-    {
-      "id": "",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/543",
-      "user_password": "PRUDENCE",
-      "class_name": "ss3"
-    },
-    {
-      "id": "",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/543",
-      "user_password": "PRUDENCEE",
-      "class_name": "ss3"
-    },
-    {
-      "id": "",
-      "user_name": "OYEWALE PRUDENCE CHIDINMA",
-      "user_email": "UTSS/20/5432",
-      "user_password": "AKINLOLU ",
       "class_name": "js2"
     }
   ],

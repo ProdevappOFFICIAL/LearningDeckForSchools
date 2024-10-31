@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card} from "@/components/ui/card";
 import { Separator } from "@radix-ui/react-separator";
-import { Bolt} from "lucide-react";
+import { Bolt, FileDown, Import} from "lucide-react";
 import Image from "next/image";
 import {
   Dialog,
@@ -28,6 +28,19 @@ import { Moon, Sun } from "lucide-react"
 import { useTheme } from "next-themes"
 
 
+interface Question {
+  id: string;
+  question: string;
+  incorrect_answers: string[];
+  correct_answer: string;
+}
+
+interface ExamData {
+  class_name: string;
+  subject: string;
+  exam_name: string;
+  questions: Question[];
+}
 
    const AdminDashboard = () => {
     const [exam , setExam] = useState("Updating...");
@@ -35,7 +48,143 @@ import { useTheme } from "next-themes"
     const [user , setUser] = useState("Updating...");
     const [batchNo, setBatchNo] = useState(''); // initial batch number
     const { setTheme } = useTheme();
+    const id = 1
+    const [jsonData, setJsonData] = useState<ExamData | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string>("");
+  const [errorLog, setErrorLog] = useState<string[]>([]);
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    const fileContent = await file.text();
+
+    const examData: ExamData = {
+   
+      questions: [],
+    };
+
+    let questionText = "";
+    let answerOptions: string[] = [];
+    let correctAnswer = "";
+    const errors: string[] = [];
+
+    // Define regex patterns to match class, subject, exam, questions, options, and answers
+    const classRegex = /Class\s*=\s*"([^"]+)"/;
+    const subjectRegex = /Subject-name\s*=\s*"([^"]+)"/;
+    const examNameRegex = /Exam-name\s*=\s*"([^"]+)"/;
+    const questionRegex = /Q\d+\.\s*(.+)/;
+    const optionRegex = /^[A-Da-d]\.\s*(.+)/;
+    const answerRegex = /Answer\s*:\s*([A-Da-d])/;
+
+    const lines = fileContent.split("\n");
+
+    lines.forEach((line) => {
+      const text = line.trim();
+      if (classRegex.test(text)) {
+        examData.class_name = text.match(classRegex)?.[1] || "";
+      } else if (subjectRegex.test(text)) {
+        examData.subject = text.match(subjectRegex)?.[1] || "";
+      } else if (examNameRegex.test(text)) {
+        examData.exam_name = text.match(examNameRegex)?.[1] || "";
+      } else if (questionRegex.test(text)) {
+        // Save the previous question if complete
+        if (questionText && answerOptions.length === 4 && correctAnswer) {
+          const questionId = (examData.questions.length + 1).toString();
+          examData.questions.push({
+            id: questionId,
+            question: questionText,
+            incorrect_answers: answerOptions.filter((opt) => opt !== correctAnswer),
+            correct_answer: correctAnswer,
+            class_name: examData.class_name, // Add class_name
+            subject: examData.subject, // Add subject
+            exam_name: examData.exam_name, // Add exam_name
+          });
+        } else if (questionText) {
+          errors.push(`Skipped incomplete question: "${questionText}" - Issue: Missing correct answer or options.`);
+        }
+        
+        // Start a new question
+        questionText = text.match(questionRegex)?.[1] || "";
+        answerOptions = [];
+        correctAnswer = "";
+      } else if (optionRegex.test(text)) {
+        const optionText = text.slice(3).trim();
+        
+        if (answerOptions.length >= 4) {
+          errors.push(`Extra option found for question: "${questionText}" - Option: "${optionText}"`);
+        } else {
+          answerOptions.push(optionText);
+        }
+      } else if (answerRegex.test(text)) {
+        const answerMatch = text.match(answerRegex);
+        if (answerMatch) {
+          const answerIndex = answerMatch[1].toUpperCase(); // Normalize to uppercase
+          correctAnswer = answerOptions[["A", "B", "C", "D"].indexOf(answerIndex)];
+    
+          // Check for a mismatch if the answer index doesn't match any option
+          if (!correctAnswer) {
+            errors.push(`Answer inconsistency for question: "${questionText}" - Expected answer option not found.`);
+          }
+        } else {
+          errors.push(`Invalid answer format for question: "${questionText}" - Text: "${text}"`);
+        }
+      }
+    });
+    
+    // Final check for the last question in the list
+    if (questionText && answerOptions.length === 4 && correctAnswer) {
+      const questionId = (examData.questions.length + 1).toString();
+      examData.questions.push({
+        id: questionId,
+        question: questionText,
+        incorrect_answers: answerOptions.filter((opt) => opt !== correctAnswer),
+        correct_answer: correctAnswer,
+        class_name: examData.class_name.toLocaleLowerCase, // Add class_name
+        subject: examData.subject, // Add subject
+        exam_name: examData.exam_name, // Add exam_name
+      });
+    } else if (questionText) {
+      errors.push(`Skipped incomplete final question: "${questionText}" - Issue: Missing correct answer or options.`);
+    }
+    
+
+    setJsonData(examData);
+    setErrorLog(errors); // Log errors for skipped or incomplete questions
+  };
+
+  const handleExportToServer = async () => {
+    if (jsonData && jsonData.questions.length > 0) {
+      try {
+        const responses = await Promise.all(
+          jsonData.questions.map(async (question) => {
+            const { id, question: questionText, incorrect_answers, correct_answer, class_name, subject, exam_name } = question;
+            const payload = {
+              id,
+              question: questionText,
+              incorrect_answers,
+              correct_answer,
+              class_name,
+              subject,
+              exam_name,
+            };
   
+            // Sending each question to the API
+            return await axios.post("http://localhost:3333/Question", payload);
+          })
+        );
+  
+        setStatusMessage(`Data saved successfully! Response IDs: ${responses.map(res => res.data.id).join(', ')}`);
+      } catch (error) {
+        console.error("Failed to save data to JSON server:", error);
+        setStatusMessage("Failed to save data. Please try again.");
+      }
+    } else {
+      setStatusMessage("No questions to save.");
+    }
+  };
+  
+
     // Fetch current batch data on component mount
     useEffect(() => {
       axios.get(`http://localhost:3333/Batch/${id}`)
@@ -82,118 +231,14 @@ import { useTheme } from "next-themes"
   })
 
 
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const file = event.target.files?.[0];
-      if (!file) return;
-  
-      try {
-         await convertTxtToJson(text); // Convert text file content to JSON
-      } catch (error) {
-          console.error("Error during file conversion or saving process:", error);
-      }
-  };
-  
-  const convertTxtToJson = async (txtContent) => {
-    // Split content into lines, trim whitespace, and filter out empty lines
-    const lines = txtContent.split('\n').map(line => line.trim()).filter(Boolean);
 
-    // Extract metadata from the first three lines
-    const className = lines[0]?.split('=')[1]?.replace(/"/g, '').trim() || '';
-    const subjectName = lines[1]?.split('=')[1]?.replace(/"/g, '').trim() || '';
-    const examName = lines[2]?.split('=')[1]?.replace(/"/g, '').trim() || '';
 
-    // Check if required metadata is present
-    if (!className || !subjectName || !examName) {
-        console.error("Error: Missing required exam metadata.");
-        return;
-    }
-
-    console.log("Parsed Metadata:", { className, subjectName, examName });
-
-    const questions = [];
-    let questionId = 1;
-    let i = 3; // Start after metadata
-
-    while (i < lines.length) {
-        console.log(`Processing line ${i}: ${lines[i]}`); // Log current line being processed
-        const line = lines[i];
-        
-        // Detect start of a new question
-        if (line.startsWith('Q')) {
-            // Parse the question text
-            const questionText = line.slice(line.indexOf('.') + 1).trim();
-
-            // Parse answer options A, B, C, D
-            const answers = [];
-            for (let j = 1; j <= 4; j++) {
-                const answerLine = lines[i + j];
-                if (answerLine && answerLine.startsWith(String.fromCharCode(64 + j))) { // A, B, C, D
-                    const answerText = answerLine.slice(answerLine.indexOf('.') + 1).trim();
-                    answers.push(answerText);
-                } else {
-                    console.warn(`Missing or malformed answer option for question ${questionId}, expected ${String.fromCharCode(64 + j)}`);
-                }
-            }
-
-            // Ensure we have exactly 4 answer options
-            if (answers.length !== 4) {
-                console.error(`Question ${questionId} does not have exactly 4 answer options. Skipping this question.`);
-                i += 6; // Move to the next question block
-                questionId++;
-                continue; // Skip to next question
-            }
-
-            // Parse the correct answer
-            const answerLine = lines[i + 5];
-            const correctAnswerLetter = answerLine ? answerLine.split(':')[1]?.trim().toUpperCase() : '';
-
-            if (!correctAnswerLetter || !['A', 'B', 'C', 'D'].includes(correctAnswerLetter)) {
-                console.error(`Invalid or missing correct answer for question ${questionId}, skipping question.`);
-                i += 6; // Move to the next question block
-                questionId++;
-                continue; // Skip to next question
-            }
-
-            const correctAnswerText = answers[correctAnswerLetter.charCodeAt(0) - 65];
-            const incorrectAnswers = answers.filter((_, index) => index !== (correctAnswerLetter.charCodeAt(0) - 65));
-
-            // Prepare question data
-            const questionData = {
-                id: questionId.toString(),
-                question: questionText,
-                incorrect_answers: incorrectAnswers,
-                correct_answer: correctAnswerText,
-                class_name: className.toLowerCase(),
-                exam_name: examName,
-                subject: subjectName.toLowerCase()
-            };
-
-            console.log("Prepared Question Data:", questionData);
-
-            // Attempt to save the question to the API
-            try {
-                const response = await axios.post("http://localhost:3333/Question", questionData);
-                console.log(`Question ID ${questionId} saved successfully:`, response.data);
-                toast("Added " + subjectName.toLowerCase() + " Questions");
-            } catch (error) {
-                console.error("API Error while saving question:", questionData, error);
-            }
-
-            questions.push(questionData);
-            questionId++;
-            i += 6; // Move to the next question block
-        } else {
-            i++; // Continue if line does not start with "Q"
-        }
-    }
-
-    console.log(`Total questions processed: ${questions.length}`); // Log total processed questions
-    return { Question: questions };
-};
 
 
 
     return ( <div className="flex flex-col w-full">
+    
+ 
         <Toaster />
      <div className="flex items-center gap-x-4 py-3 px-3 border-b w-full">
      <div className="flex items-center gap-x-2">   <Image className=" rounded-full border" alt="hello" height={50} width={50} src="/lds.png"/> <p className=" text-zinc-800  text-xl ">LearningDeck</p></div>
@@ -241,24 +286,57 @@ import { useTheme } from "next-themes"
               <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
                   <DialogTitle>Import C.A.T</DialogTitle>
-                  <DialogDescription>
+                  <DialogDescription className=" max-h-[500px] scroll-auto overflow-y-auto">
                     <div className="mt-5">
-                      <Input
-                        type="file" accept=".txt" onChange={handleFileChange}
-                        className="bg-zinc-200/20" />
+                    <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
+     
+                    <div className="flex items-center justify-center">
+      <input
+        type="file"
+        accept=".txt"
+        id="file-upload"
+        className="hidden" // Hide the default file input
+        onChange={handleFileChange}
+      />
+      <label
+        htmlFor="file-upload"
+        className="cursor-pointer flex items-center justify-center"
+      >
+        <div className="p-20 bg-zinc-600/20 hover:bg-zinc-400 rounded-full">
+          <FileDown/>
+        </div>
+       
+      </label>
+    </div>
+      {jsonData && (
+        <>
+          <div style={{ marginTop: "20px", border: "1px solid #ccc", padding: "10px", borderRadius: "5px" }}>
+            <h3>All Questions</h3>
+            <pre style={{ whiteSpace: "pre-wrap", wordWrap: "break-word", maxHeight: "300px", overflow: "auto" }}>
+              {JSON.stringify(jsonData, null, 2)}
+            </pre>
+          </div>
+          <Button className=" bg-blue-600 my-5" onClick={handleExportToServer}>
+            Save to JSON Server
+          </Button>
+          {statusMessage && <p>{statusMessage}</p>}
+          {errorLog.length > 0 && (
+            <div className=" my-5">
+              <h4 className=" font-bold px-2 py-1 bg-red-600 rounded text-white my-2">Skipped or Incomplete Questions</h4>
+              <ul className=" border p-5">
+                {errorLog.map((error, index) => (
+                  <li key={index}>{error}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
+      )}
+    </div>
                     </div>
                   </DialogDescription>
                 </DialogHeader>
-                <DialogFooter>
-                  <DialogClose asChild>
-                    <Button type="submit" size="sm" className="bg-red-600 dark:bg-red-800 px-3 dark:text-white dark:hover:bg-green-400">
-                      <p className="text-[11px] mr-2 text-zinc-200">
-                      Import File
-                      </p>
-                    
-                    </Button>
-                  </DialogClose>
-                </DialogFooter>
+             
               </DialogContent>
             </Dialog>
 

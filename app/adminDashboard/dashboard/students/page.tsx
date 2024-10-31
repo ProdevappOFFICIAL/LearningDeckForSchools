@@ -29,7 +29,7 @@ function StudentList() {
     const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [modalVisible, setModalVisible] = useState(false);
+
     const [isEdit, setIsEdit] = useState(false);
     const [selectedClass, setSelectedClass] = useState<string>("");
 
@@ -41,7 +41,7 @@ function StudentList() {
         class_name: "",
     });
 
-    const { id } = useParams();
+
 
     useEffect(() => {
         async function getAllStudents() {
@@ -50,9 +50,7 @@ function StudentList() {
                 setStudents(response.data);
                 setFilteredStudents(response.data);
             } catch (err) {
-                setError("Failed to fetch students. Please try again.");
-            } finally {
-                setLoading(false);
+                setError("Failed to fetch students. Please try again.", err)
             }
         }
         getAllStudents();
@@ -103,7 +101,7 @@ function StudentList() {
 const disacble = () => {
     setIsEdit(false)
 }
-    if (loading) return <div>Loading...</div>;
+  //  if (loading) return <div>Loading...</div>;
     if (error) return <div>{error}</div>;
 
     return (

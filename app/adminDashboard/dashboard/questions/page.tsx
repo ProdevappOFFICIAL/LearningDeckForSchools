@@ -98,7 +98,23 @@ function Question() {
             console.error("Error adding/updating question:", error);
         }
     };
-
+ 
+      const handleDeleteAll = async () => {
+        try {
+            const response = await fetch('http://localhost:3333/Question', {
+            method: 'DELETE',
+          });
+    
+          if (response.ok) {
+            alert('All content deleted successfully');
+          } else {
+            alert('Failed to delete content');
+          }
+        } catch (error) {
+          console.error('Error deleting content:', error);
+          alert('An error occurred while deleting content');
+        }
+      };
     const fetchQuestions = async () => {
         try {
             const response = await axios.get("http://localhost:3333/Question");
@@ -117,6 +133,7 @@ function Question() {
            Selected Question Class: {userData.class_name}
             <div className="flex items-center justify-between">
     <QuestionListHeader />
+    <Button onClick={handleDeleteAll}> Delete all Questions</Button>
        <AddOrEditQuestionDialog
                 userData={userData}
                 onTextFieldChange={onTextFieldChange}

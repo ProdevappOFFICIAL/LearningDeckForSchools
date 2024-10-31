@@ -36,9 +36,9 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
             const dialogElement = contentRef.current;
             const opt = {
                 margin: 0.5,    // Adjust margin for dialog fit
-                filename: 'result.pdf',
+                filename:  result.username + ' RESULT.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: {
+                html2canvas: { 
                     scale: 2,    // Improve clarity for smaller dialog
                     width: dialogElement.offsetWidth,   // Fit to dialog's width
                     height: dialogElement.offsetHeight, // Fit to dialog's height
