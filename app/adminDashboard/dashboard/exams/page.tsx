@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import axios from "axios";
+import { Book, BookOpenText } from "lucide-react";
 import { useEffect, useState } from "react";
 
 function Exams() {
@@ -113,14 +114,7 @@ function Exams() {
                                     placeholder="Minutes"
                                     className="border p-2 rounded"
                                 />
-                                <input
-                                    type="number"
-                                    name="seconds"
-                                    value={form.seconds}
-                                    onChange={handleInputChange}
-                                    placeholder="Seconds"
-                                    className="border p-2 rounded"
-                                />
+                             
                                 <button
                                     onClick={handleSaveExam}
                                     className="bg-blue-600 text-white px-4 py-2 rounded mt-3"
@@ -140,9 +134,12 @@ function Exams() {
             </div>
 
             <div className="flex flex-col overflow-x-auto mx-4 items-center">
-                <div className="flex flex-row  w-full  justify-between">
+                <div className="flex flex-row  mb-3 w-full  justify-between">
                     
-                    <p className="font-bold text-2xl my-3">List of All Exams</p>
+                <div className="flex justify-between rounded-full px-5 gap-x-2 items-center mx-4 bg-green-400/20">
+        <BookOpenText/>
+        <p className=" text-2xl my-3">Exams</p>
+    </div>
                 <Button onClick={handleAddClick} className="bg-green-600 text-white px-4 py-2 rounded">
                     Add Exam
                 </Button>
@@ -154,7 +151,7 @@ function Exams() {
                         <tr>
                             <th className="py-3 px-4 border-b text-left">Exam Name</th>
                             <th className="py-3 px-4 border-b text-left">Class Name</th>
-                            <th className="py-3 px-4 border-b text-left">Time (min:sec)</th>
+                            <th className="py-3 px-4 border-b text-left">Time (minutes)</th>
                             <th className="py-3 px-4 border-b text-left">Actions</th>
                         </tr>
                     </thead>
@@ -168,7 +165,7 @@ function Exams() {
                                 <tr key={data.id} className="hover:bg-gray-50 transition duration-200">
                                     <td className="py-2 px-4 border">{data.exam_name}</td>
                                     <td className="py-2 px-4 border uppercase">{data.class_name}</td>
-                                    <td className="py-2 px-4 border">{data.minutes} : {data.seconds}</td>
+                                    <td className="py-2 px-4 border">{data.minutes} </td>
                                     <td className="py-2 px-4 border flex space-x-2">
                                         <button
                                             onClick={() => handleEditClick(data)}

@@ -13,6 +13,7 @@ interface QuestionData {
 }
 
 interface ResultData {
+    img: string;
     username: string;
     classname: string;
     overallScore: number;
@@ -35,7 +36,7 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
         if (contentRef.current) {
             const dialogElement = contentRef.current;
             const opt = {
-                margin: 0.5,    // Adjust margin for dialog fit
+                margin: 0.1,    // Adjust margin for dialog fit
                 filename:  result.username + ' RESULT.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { 
@@ -44,7 +45,7 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
                     height: dialogElement.offsetHeight, // Fit to dialog's height
                     useCORS: true,
                 },
-                jsPDF: { unit: 'in', format: [dialogElement.offsetWidth / 96, dialogElement.offsetHeight / 96], orientation: 'portrait' }
+                jsPDF: { unit: 'in', format: [dialogElement.offsetWidth / 30, dialogElement.offsetHeight / 30], orientation: 'portrait' }
             };
     
             html2pdf().set(opt).from(dialogElement).save();
@@ -67,17 +68,17 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
                     </div>
                 </div>
 
-                <div ref={contentRef} className="my-4"> {/* Wrap content with the ref */}
+                <div ref={contentRef} className="my-4 w-full p-10 border-[10px]"> {/* Wrap content with the ref */}
                     <div className="flex justify-between border-t border-b bg-zinc-200/20 p-2">
                         <div className="flex flex-col">
                             <p><strong>Username:</strong> {result.username}</p>
                             <p className="uppercase"><strong>Class:</strong> {result.classname}</p>
-                            <p><strong>Overall Score:</strong> {result.overallScore}%</p>
+                            
                         </div>
                         <Image
                             width={50}
                             height={50}
-                            src={`/students/${result.full_name}.png`}
+                            src={result.img}
                             className="flex rounded-full border border-green-600"
                             alt="Student profile"
                             onError={(e) => {
@@ -85,13 +86,13 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
                             }}
                         />
                     </div>
-                    <div className="my-2">
+                    <div className="my-2 h-full pb-10">
                         <h3 className="font-semibold py-3">Subject Scores:</h3>
-                        <table className="w-full border border-gray-300">
+                        <table className="w-[500px] border border-gray-300">
                             <thead>
                                 <tr className="bg-zinc-200/20">
                                     {Object.keys(result.subjectScores).map((subject) => (
-                                        <th key={subject} className="py-2 px-4 border-b text-left uppercase">
+                                        <th key={subject} className="py-2 px-4 border text-center uppercase">
                                             {subject}
                                         </th>
                                     ))}
@@ -100,7 +101,7 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
                             <tbody>
                                 <tr>
                                     {Object.entries(result.subjectScores).map(([subject, score]) => (
-                                        <td key={subject} className="py-2 px-4 border-b text-center">
+                                        <td key={subject} className="py-2 px-4  border text-center">
                                             {score.correct}/{score.total}
                                         </td>
                                     ))}
@@ -108,7 +109,7 @@ const ResultModal: React.FC<ResultModalProps> = ({ isOpen, onClose, result }) =>
                             </tbody>
                         </table>
                     </div>
-                    <div className="my-4">
+                    <div className="my-4 hidden">
                         <h3 className="font-semibold mb-2">Questions</h3>
                         <ul className="space-y-3">
                             {result.questions.map((question, index) => (

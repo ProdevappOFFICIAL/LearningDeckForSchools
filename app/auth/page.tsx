@@ -117,7 +117,7 @@ const StudentLogin: React.FC = () => {
         <div className=" h-5"/>
 
          <Image  alt="UNCLE TEE LOGO" height={400} width={400} className="rounded-full pointer-events-none "   src="/utss.png.png"/>
-         <p className="flex font-bold text-2xl ml-[-10px] mt-[-40px] text-black/75 items-center pointer-events-none ">UNCLE TEE SCIENCE SCHOOLS AND COLLEGES</p>
+         <p className="flex font-bold text-2xl ml-[-10px] mt-[-40px] text-black/75 items-center pointer-events-none ">UNCLE TEE SECONDARY SCHOOL ONDO</p>
      <div className=" h-5"/>
      <Input 
      className=" text-zinc-900 border border-zinc-200  "

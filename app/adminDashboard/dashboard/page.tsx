@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card} from "@/components/ui/card";
 import { Separator } from "@radix-ui/react-separator";
-import { Bolt, FileDown, Import} from "lucide-react";
+import { Bolt, Copy, FileDown, Import, Layout} from "lucide-react";
 import Image from "next/image";
 import {
   Dialog,
@@ -52,6 +52,39 @@ interface ExamData {
     const [jsonData, setJsonData] = useState<ExamData | null>(null);
   const [statusMessage, setStatusMessage] = useState<string>("");
   const [errorLog, setErrorLog] = useState<string[]>([]);
+  const [base64, setBase64] = useState<string | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
+  const [copySuccess, setCopySuccess] = useState<string | null>(null);
+
+
+
+  const handleCopy = () => {
+    if (base64) {
+      navigator.clipboard.writeText(base64).then(() => {
+        toast('Copied to clipboard')
+        setCopySuccess("Copied to clipboard!");
+        setTimeout(() => setCopySuccess(null), 2000); // Clear the success message after 2 seconds
+      }).catch(err => {
+        toast('Failed to Copied to clipboard')
+        setCopySuccess("Failed to copy!");
+      });
+    }
+  };
+
+  // Function to convert file to base64
+  const handlePNGFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBase64(reader.result as string);
+        setFileName(file.name);
+      };
+      reader.readAsDataURL(file); // Convert the file to base64
+    } else {
+      alert('Please upload a PNG file.');
+    }
+  };
 
   const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -173,7 +206,7 @@ interface ExamData {
             return await axios.post("http://localhost:3333/Question", payload);
           })
         );
-  
+    toast(`Added ${jsonData.questions.length}  ${jsonData.subject} Questions Sucessfully`)
         setStatusMessage(`Data saved successfully! Response IDs: ${responses.map(res => res.data.id).join(', ')}`);
       } catch (error) {
         console.error("Failed to save data to JSON server:", error);
@@ -198,16 +231,17 @@ interface ExamData {
   
     // Function to handle updating the batch_no
     const handleUpdateBatchNo = () => {
-      axios.put(`http://localhost:3333/Batch/${id}`, {
+      try {
+          axios.put(`http://localhost:3333/Batch/${id}`, {
         batch_no: batchNo
       })
-        .then(() => {
-        
-        })
-        .catch(error => {
-          console.error('Error updating batch number:', error);
-        });
-    };
+        toast('Changed to Batch'+ batchNo)
+      } catch (error) {
+         console.error('Error updating batch number:', error);
+      }
+    
+    }
+    
     useEffect(() => {
       async function getAllExam(){
           const value  = await axios.get("http://localhost:3333/ExamCombination");
@@ -241,7 +275,10 @@ interface ExamData {
  
         <Toaster />
      <div className="flex items-center gap-x-4 py-3 px-3 border-b w-full">
-     <div className="flex items-center gap-x-2">   <Image className=" rounded-full border" alt="hello" height={50} width={50} src="/lds.png"/> <p className=" text-zinc-800  text-xl ">LearningDeck</p></div>
+     <div className="flex justify-between rounded-full px-5 gap-x-2 items-center mx-4 bg-green-400/20">
+        <Layout/>
+        <p className=" text-2xl my-3">Dashboard</p>
+    </div>
       <div className="w-full"/>
       <Dialog>
               <DialogTrigger asChild>
@@ -275,7 +312,58 @@ interface ExamData {
             </Dialog>
 
     
-      
+
+            <Dialog>
+              <DialogTrigger asChild>
+                <div>
+  <Button variant={'destructive'}> Convert to Base64</Button>
+                </div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center justify-between mt-4"><p>Convert</p>       
+                      <Button onClick={handleCopy} className="bg-green-600" style={{ marginTop: '10px' }}>
+              <Copy/> 
+            </Button>
+       </DialogTitle>
+                  <DialogDescription className=" max-h-[500px] scroll-auto overflow-y-auto">
+                    <div className="mt-5">
+                    <div style={{ maxWidth: "600px", margin: "auto", padding: "20px" }}>
+     
+                    <div className="flex items-center justify-center">
+      <input
+        type="file"
+     accept="image/*"
+        id="file-upload"
+        className="hidden" // Hide the default file input
+        onChange={handlePNGFileChange}
+      />
+      <label
+        htmlFor="file-upload"
+        className="cursor-pointer flex items-center justify-center"
+      >
+        <div className="p-20 bg-zinc-600/20 hover:bg-zinc-400 rounded-full">
+          <FileDown/>
+        </div>
+       
+      </label>
+    </div>
+    <div style={{ marginTop: '20px' }} className="flex flex-col items-center">
+        {base64 && (
+          <>
+          <Image src={base64} width={200} height={200} className=" rounded-full border border-green-600" alt="image"/>
+          
+          </>
+        )}
+      </div>
+    </div>
+                    </div>
+                  </DialogDescription>
+                </DialogHeader>
+             
+              </DialogContent>
+            </Dialog>
+
 
       <Dialog>
               <DialogTrigger asChild>
@@ -316,9 +404,12 @@ interface ExamData {
               {JSON.stringify(jsonData, null, 2)}
             </pre>
           </div>
-          <Button className=" bg-blue-600 my-5" onClick={handleExportToServer}>
-            Save to JSON Server
+          <DialogClose>
+            <Button className=" bg-blue-600 my-5" onClick={handleExportToServer}>
+            Add to my Questions
           </Button>
+          </DialogClose>
+          
           {statusMessage && <p>{statusMessage}</p>}
           {errorLog.length > 0 && (
             <div className=" my-5">

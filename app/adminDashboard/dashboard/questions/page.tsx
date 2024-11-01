@@ -13,11 +13,16 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useParams, useRouter } from "next/navigation";
+import toast, { Toaster } from "react-hot-toast";
+import { Book } from "lucide-react";
+import Image from "next/image";
 
 function Question() {
     const [questions, setQuestions] = useState([]);
     const [editMode, setEditMode] = useState(false);
     const [currentQuestionId, setCurrentQuestionId] = useState(null);
+    const [classFilter, setClassFilter] = useState("");  // State for class filter
+
     
 
     const router = useRouter();
@@ -28,6 +33,7 @@ function Question() {
         id: questionId.toString(),
         exam_id: Number(id),
         question: "",
+        img: '',
         incorrect_answers: ["", "", ""],
         correct_answer: "",
         class_name: "",
@@ -63,6 +69,7 @@ function Question() {
         try {
             await axios.delete(`http://localhost:3333/Question/${questionId}`);
             fetchQuestions(); // Refresh the question list after deletion
+            toast(`Question ${questionId} deleted succesfully `)
         } catch (error) {
             console.error("Error deleting question:", error);
         }
@@ -73,10 +80,15 @@ function Question() {
         try {
             if (editMode && currentQuestionId) {
                 console.log("Updating question with ID:", currentQuestionId);
+                 
                 await axios.put(`http://localhost:3333/Question/${currentQuestionId}`, userData);
+                toast(`Updated Question`, currentQuestionId);
+                //window.location.reload();
             } else {
                 console.log("Adding new question:", userData);
                 await axios.post("http://localhost:3333/Question", userData);
+                toast("Adding new question:", userData);
+                //window.location.reload();
             }
 
             setEditMode(false);
@@ -84,6 +96,7 @@ function Question() {
             setUserData({
                 id: questionId.toString,
                 exam_id: Number(id),
+                img: "",
                 question: "",
                 incorrect_answers: ["", "", ""],
                 correct_answer: "",
@@ -99,48 +112,92 @@ function Question() {
         }
     };
  
-      const handleDeleteAll = async () => {
+    const handleDeleteAll = async () => {
         try {
-            const response = await fetch('http://localhost:3333/Question', {
-            method: 'DELETE',
-          });
-    
-          if (response.ok) {
-            alert('All content deleted successfully');
-          } else {
-            alert('Failed to delete content');
+          // Step 1: Fetch all items
+          const fetchResponse = await fetch('http://localhost:3333/Question');
+          
+          // Check if the fetch was successful
+          if (!fetchResponse.ok) {
+            throw new Error('Failed to fetch items');
           }
+      
+          const data = await fetchResponse.json();
+      
+          // Step 2: Delete each item individually
+          const deletePromises = data.map((item) =>
+            fetch(`http://localhost:3333/Question/${item.id}`, {
+              method: 'DELETE',
+            })
+          );
+      
+          // Await all delete promises
+          await Promise.all(deletePromises);
+      
+          
+          window.location.reload();
+          toast('All Questions Deleted Succesfully')
         } catch (error) {
           console.error('Error deleting content:', error);
           alert('An error occurred while deleting content');
         }
       };
-    const fetchQuestions = async () => {
+      
+      
+      const fetchQuestions = async () => {
         try {
             const response = await axios.get("http://localhost:3333/Question");
-            setQuestions(response.data);
+            const filteredQuestions = classFilter
+                ? response.data.filter(question => question.class_name === classFilter)
+                : response.data;
+            setQuestions(filteredQuestions);
         } catch (error) {
             console.error("Error fetching questions:", error);
         }
     };
+    
 
     useEffect(() => {
         fetchQuestions();
-    }, []);
+    }, [classFilter]);
+    
 
     return (
-        <div className="container mx-auto p-4">
-           Selected Question Class: {userData.class_name}
-            <div className="flex items-center justify-between">
+        <div className="container mx-auto p-4 ">
+            <Toaster/>
+          
+            <div className="flex items-center  justify-between bg-white/30">
     <QuestionListHeader />
-    <Button onClick={handleDeleteAll}> Delete all Questions</Button>
-       <AddOrEditQuestionDialog
+
+
+<div className="flex gap-3 justify-between items-center ">
+    <div className="flex py-1 px-2 pb-2 bg-green-600/20 rounded items-center ">
+<SelectField
+
+    options={["js1", "js2", "js3", "ss1", "ss2", "ss3"]}
+    onChange={(e) => setClassFilter(e.target.value)}
+    value={classFilter}
+/>
+
+<p className="flex py-1 px-2 mt-1 bg-green-200/20 rounded text-black/80">
+{classFilter}: has {questions.length} questions
+    </p> 
+    </div>
+
+<Button onClick={handleDeleteAll} variant={'destructive'}> Delete all Questions</Button>
+    
+     <div className="w-4"/>
+      <AddOrEditQuestionDialog
                 userData={userData}
                 onTextFieldChange={onTextFieldChange}
                 handleAddOrUpdateQuestion={handleAddOrUpdateQuestion}
                 setOption={setOption}
                 editMode={editMode}
             />
+</div>
+     
+
+      
             </div>
         
             <QuestionTable questions={questions} onEdit={loadQuestionData} onDelete={handleDeleteQuestion} />
@@ -151,8 +208,9 @@ function Question() {
 }
 
 const QuestionListHeader = () => (
-    <div className="flex justify-between items-center mx-4">
-        <p className="font-bold text-2xl my-3">List of All Questions</p>
+    <div className="flex justify-between rounded-full px-5 gap-x-2 items-center mx-4 bg-green-400/20">
+        <Book/>
+        <p className=" text-2xl my-3">Questions</p>
     </div>
 );
 
@@ -166,9 +224,23 @@ const AddOrEditQuestionDialog = ({ userData, onTextFieldChange, handleAddOrUpdat
         <AlertDialogContent>
             <AlertDialogHeader>
                 <AlertDialogTitle>{editMode ? "Edit Question" : "Add New Question"}</AlertDialogTitle>
-                <AlertDialogDescription className="space-y-3">
-                    <InputField label="Question Image" name="img_name" type="file" onChange={onTextFieldChange} />
+                <AlertDialogDescription className="space-y-3 overflow-y-auto max-h-[500px]">
+                <div className="space-y-3">
+                                <Image src={userData.img} height={100} width={100} style={{ maxWidth: '100%', maxHeight: '100%'}} className=" h-auto w-full rounded border border-black" alt="image"/>
+                                        <label className="mt-3" htmlFor="profile">Question Image
+                                            <Input type="text" name="img" value={userData.img} onChange={onTextFieldChange} required />
+                                        </label>
+                                        <label className="flex items-center">
+                                            Question image
+                                             <input
+                                             className=" ml-3"
+                                             type="checkbox"
+                                                />
+                                        </label>
+                                       
+                                    </div>
                     <InputField label="Question" name="question" onChange={onTextFieldChange} value={userData.question} />
+
                     <InputField label="Option 1" onChange={(e) => setOption(0, e.target.value)} value={userData.incorrect_answers[0]} />
                     <InputField label="Option 2" onChange={(e) => setOption(1, e.target.value)} value={userData.incorrect_answers[1]} />
                     <InputField label="Option 3" onChange={(e) => setOption(2, e.target.value)} value={userData.incorrect_answers[2]} />
@@ -234,9 +306,9 @@ const SelectField = ({ label, name, options, onChange, value }) => (
 );
 
 const QuestionTable = ({ questions, onEdit, onDelete }) => (
-    <table className="min-w-full bg-white border border-gray-300 mt-6">
+    <table className="min-w-full bg-white border rounded border-gray-300 mt-6 overflow-y-auto">
         <thead>
-            <tr className="bg-gray-100">
+            <tr className="bg-gray-100 rounded-sm">
                 <TableHeader title="S/N" />
                 <TableHeader title="Question" />
                 <TableHeader title="A" />

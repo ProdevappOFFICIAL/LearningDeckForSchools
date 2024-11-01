@@ -35,7 +35,8 @@ function ExamCombination() {
             setUserClass(userData.class_name);
             setID(userData.user_email)
             setName(userData.user_name)
-            setPass(userData.user_password)
+            setPass(userData.img)
+            
           
           }
         })
@@ -93,7 +94,7 @@ function ExamCombination() {
 
   // Navigate to ExamPage with the selected exam details
   const handleExamClick = (exam) => {
-    router.push(`/studentDashboard/ExamPage/?user_name=${encodeURIComponent(userName)}&&class_name=${encodeURIComponent(userClass)}&&exam_name=${encodeURIComponent(exam.exam_name)}&&key=${encodeURIComponent(pass)}`)
+    router.push(`/studentDashboard/ExamPage/?user_name=${encodeURIComponent(userName)}&&class_name=${encodeURIComponent(userClass)}&&exam_name=${encodeURIComponent(exam.exam_name)}&&min=${encodeURIComponent(exam.minutes)}`)
   };
   const goFullScreen = () => {
     const elem = document.documentElement; // Targeting the whole page
@@ -144,7 +145,7 @@ function ExamCombination() {
       </div>
     
 
-   <div className="h-full w-full  p-6 flex flex-col items-center">
+   <div className="h-full w-full  p-6 flex flex-col items-center overflow-y-auto">
       
 
       {loading ? (
@@ -157,7 +158,7 @@ function ExamCombination() {
         <>
         <div className="mb-6">
           <div className="flex items-center rounded-full p-5">
-         <Image width={150} height={150} src={'/students/'+ pass + '.png'} className=" rounded-full border border-green-600" alt="Student logo"/>
+        
           </div>
         </div>
 
@@ -175,12 +176,14 @@ function ExamCombination() {
                         <div key={no.id}>
                                 { exam.exam_name.includes(no.batch_no) ? (
 
-                           <><div className="flex justify-between items-center p-4 bg-white dark:bg-zinc-600 dark:text-white shadow-lg rounded-lg cursor-pointer hover:bg-gray-100 transition">
-                                <div className="flex-1 space-y-3">
-                                  <p className="border px-4 py-2">EXAM- NAME: {exam.exam_name} </p>
-                                  <p className="border px-4 py-2">ADMISSION NUMBER: {userID}</p>
-                                  <p className="border px-4 py-2">NAME: {userName}</p>
-                                  <p className="border px-4 py-2 uppercase">CLASS: {userClass}</p>
+                           <><div className="flex justify-between items-center p-2 bg-white dark:bg-zinc-600 dark:text-white shadow-lg rounded-lg cursor-pointer hover:bg-gray-100 transition">
+                                <div className="flex flex-col w-full items-center space-y-3">
+                                <Image width={150} height={150} src={pass} className=" rounded-full border border-green-600" alt="Student logo"/>
+                                  <p className="border px-4 py-2 w-full">EXAM- NAME: {exam.exam_name} </p>
+                                  <p className="border px-4 py-2 w-full">ADMISSION NUMBER: {userID}</p>
+                                  <p className="border px-4 py-2 w-full">NAME: {userName}</p>
+                                  <p className="border px-4 py-2 uppercase w-full">CLASS: {userClass}</p>
+                                  <p className="border px-4 py-2 uppercase flex w-full">TIME: {exam.minutes} : 00</p>
                                  
                                 </div>
                               </div><button className=" w-full mt-3 bg-green-600 rounded text-white py-2 hover:bg-green-400" onClick={() => handleExamClick(exam)}>

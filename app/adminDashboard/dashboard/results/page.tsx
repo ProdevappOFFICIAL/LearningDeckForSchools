@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import ResultModal from "@/components/global/admin/result_modal";
+import { Album, User } from "lucide-react";
 
 
 const Result: React.FC = () => {
@@ -13,6 +14,9 @@ const Result: React.FC = () => {
     const [selectedResult, setSelectedResult] = useState<ResultData | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedClass, setSelectedClass] = useState<string>("");
+    const [Batch, setBatch] = useState<string>("");
+    
+
     
    
     
@@ -52,8 +56,14 @@ const Result: React.FC = () => {
 
     const handleClassChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const selected = e.target.value;
+    
         setSelectedClass(selected);
         setFilteredResults(selected ? results.filter((result) => result.classname === selected) : results);
+    };
+    const handleBatchChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const selected = e.target.value;
+        setBatch(selected);
+        setFilteredResults(selected ? results.filter((result) => result.exam_name.includes(selected)) : results);
     };
 
     if (loading) return <div>Loading...</div>;
@@ -62,7 +72,10 @@ const Result: React.FC = () => {
     return (
         <>
             <div className="flex flex-row px-4 pt-4 mb-4 justify-between bg-zinc-200/20 border-b w-full">
-                <h2 className="text-2xl font-bold text-center mb-6">Exam Results</h2>
+            <div className="flex justify-between rounded-full mb-3 px-5 gap-x-2 items-center mx-4 bg-green-400/20">
+        <Album/>
+        <p className=" text-2xl my-3">Results</p>
+    </div>
                 <div className="mb-4 text-center">
                    
                     <select
@@ -78,6 +91,19 @@ const Result: React.FC = () => {
                         <option value="ss1">SS1</option>
                         <option value="ss2">SS2</option>
                         <option value="ss3">SS3</option>
+                       
+                    </select>
+                    <select
+                        id="classSelect"
+                        value={Batch}
+                        onChange={handleBatchChange}
+                        className="p-2 border rounded"
+                    >
+                        <option value="">All Batch</option>
+                        <option value="1">(BATCH 1)</option>
+                        <option value="2">(BATCH 2) </option>
+                       
+                    
                     </select>
                 </div>
             </div>
@@ -86,7 +112,7 @@ const Result: React.FC = () => {
                     <table className="min-w-full bg-white border border-gray-200">
                         <thead>
                             <tr className="bg-gray-100">
-                                <th className="px-4 py-2 border hidden">Profile</th>
+                                <th className="px-4 py-2 border ">Passport</th>
                                 <th className="px-4 py-2 border">Username</th>
                                 <th className="px-4 py-2 border">Class</th>
                                 <th className="px-4 py-2 border">Exam-Name</th>
@@ -100,15 +126,11 @@ const Result: React.FC = () => {
                             {filteredResults.length > 0 ? (
                                 filteredResults.map((data) => (
                                     <tr key={data.id} className="hover:bg-gray-50">
-                                        <td className="py-2 px-4 border-b hidden">
-                                            <Image
-                                                width={50}
-                                                height={50}
-                                                src={`/students/${data.full_name}.png`}
-                                                className="rounded-full border border-green-600"
-                                                alt="Student profile"
-                                                onError={(e) => { e.currentTarget.src = "/default-profile.png"; }}
-                                            />
+                                        <td className="py-2 px-4 border-b">
+                                        <div className=" rounded-full p-5 bg-green-200/20">
+                <User/>
+
+                </div>
                                         </td>
                                         <td className="py-2 px-4 border-b">{data.username}</td>
                                         <td className="py-2 px-4 border-b uppercase">{data.classname}</td>
@@ -116,8 +138,9 @@ const Result: React.FC = () => {
                                         <td className="py-2 px-4 border-b font-bold text-green-600">{data.overallScore}%</td>
                                         <td className="py-2 px-4 border-b">
                                             {Object.entries(data.subjectScores).map(([subject, score]) => (
-                                                <div key={subject} className="border p-1 text-sm">
-                                                    {subject}: {score.correct}/{score.total}
+                                                <div key={subject} className=" flex border px-2 py-1  bg-blue-600 border-t-white border-b-white text-sm bg-blue text-white ">
+                                                   {subject}:
+                                                    {score.correct}/{score.total}
                                                 </div>
                                             ))}
                                         </td>

@@ -29,6 +29,7 @@ import Image from 'next/image';
 
 interface Question {
   _id: string | number;
+  img: string;
   visited: boolean;
   attempted: boolean;
   userOption: number;
@@ -44,16 +45,42 @@ const ExamPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [pass, setPass] =useState("");
 
   const userClass = new URLSearchParams(window.location.search).get("class_name");
   const userName = new URLSearchParams(window.location.search).get("user_name");
   const examName = new URLSearchParams(window.location.search).get("exam_name");
   const passport = new URLSearchParams(window.location.search).get("key");
-  const [minutes, setMinutes] = useState(1);
+  const min = new URLSearchParams(window.location.search).get("min");
+  //const sec = new URLSearchParams(window.location.search).get("sec");
+  const [minutes, setMinutes] = useState(min);
   const [seconds, setSeconds] = useState(0); // Set initial time here
   const [isActive, setIsActive] = useState(false);
 
-  
+  useEffect(() => {
+
+    // Fetch the logged-in user information (assuming user is logged in and stored in sessionStorage)
+    const loggedInUserEmail = sessionStorage.getItem("user");
+
+    if (loggedInUserEmail) {
+      // Fetch user data from JSON server to get the class name of the logged-in user
+      axios
+        .get("http://localhost:3333/User")
+        .then((response) => {
+          const userData = response.data.find(
+            (user: { user_email: string; }) => user.user_email === loggedInUserEmail      );
+    
+          if (userData) {
+            setPass(userData.img)
+            
+          
+          }
+        })
+        .catch(() => {
+       
+        });
+    }
+  }, []);
 
 
   useEffect(() => {
@@ -118,6 +145,7 @@ const ExamPage = () => {
       overallScore: questions.reduce((total, ques) => {
         return total + (ques.options[ques.userOption] === ques.correct_answer ? 1 : 0);
       }, 0),
+      img: pass,
       full_name: passport,
       username: userName,
       classname: userClass,
@@ -211,6 +239,18 @@ const ExamPage = () => {
       }
 
       // Save and next (N)
+      if (key === 'p') {
+        if (currentQuestion > 0) {
+          markVisited();
+          setCurrentQuestion(currentQuestion - 1);
+        }
+      }
+      if (key === 's') {
+        saveAndSubmit()
+      }
+      if (key === 'enter') {
+        saveAndSubmit()
+      }
       if (key === 'n') {
         saveAndNextFunction();
       }
@@ -357,7 +397,8 @@ const ExamPage = () => {
             </CardTitle>
             <CardDescription className=' font-bold text-sm text-black'>{questions[currentQuestion]?.question}</CardDescription>
           </CardHeader>
-          <CardContent className="flex flex-col">
+          <div className='flex'>
+  <CardContent className="flex flex-col">
             {questions[currentQuestion]?.options.map((option, index) => (
               <div key={index} className="flex w-[500px] items-center p-3">
                 <input
@@ -377,12 +418,17 @@ const ExamPage = () => {
               </div>
             ))}
           </CardContent>
+      <div className='w-full'/>
+          <Image src={questions[currentQuestion]?.img ?? 'favicon.ico'} onError={((e) => (e.currentTarget.src = 'favicon.ico'))} height={100} width={100} className=" w-3/4" alt="image"/>
+
+          </div>
+        
         </Card>
 
        <Card className='flex flex-col'>
        <div className="">
           <div className="flex items-center rounded-sm p-5">
-         <Image width={150} height={150} src={'/students/'+ passport + '.png'} className=" rounded-full bg-blend-screen border border-green-600" alt="Student logo"/>
+         <Image width={150} height={150} src={pass} className=" rounded-full bg-blend-screen border border-green-600" alt="Student logo"/>
           </div>
         </div>
         <div className='flex flex-row w-full text-sm p-2 bg-zinc-200/20'>
