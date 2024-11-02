@@ -203,7 +203,7 @@ interface ExamData {
             };
   
             // Sending each question to the API
-            return await axios.post("http://localhost:3333/Question", payload);
+            return await axios.post("http://192.168.173.1:3333/Question", payload);
           })
         );
     toast(`Added ${jsonData.questions.length}  ${jsonData.subject} Questions Sucessfully`)
@@ -220,7 +220,7 @@ interface ExamData {
 
     // Fetch current batch data on component mount
     useEffect(() => {
-      axios.get(`http://localhost:3333/Batch/${id}`)
+      axios.get(`http://192.168.173.1:3333/Batch/${id}`)
         .then(response => {
           setBatchNo(response.data.batch_no);
         })
@@ -232,7 +232,7 @@ interface ExamData {
     // Function to handle updating the batch_no
     const handleUpdateBatchNo = () => {
       try {
-          axios.put(`http://localhost:3333/Batch/${id}`, {
+          axios.put(`http://192.168.173.1:3333/Batch/${id}`, {
         batch_no: batchNo
       })
         toast('Changed to Batch'+ batchNo)
@@ -244,21 +244,21 @@ interface ExamData {
     
     useEffect(() => {
       async function getAllExam(){
-          const value  = await axios.get("http://localhost:3333/ExamCombination");
+          const value  = await axios.get("http://192.168.173.1:3333/ExamCombination");
           setExam(value.data.length);
       }
       getAllExam();
 
 
       async function getAllQuestions(){
-          const value  = await axios.get("http://localhost:3333/Question");
+          const value  = await axios.get("http://192.168.173.1:3333/Question");
           setQuestion(value.data.length);
       }
       getAllQuestions();
 
 
       async function getAllUsers(){
-          const value  = await axios.get("http://localhost:3333/User");
+          const value  = await axios.get("http://192.168.173.1:3333/User");
           setUser(value.data.length);
       }
       getAllUsers();

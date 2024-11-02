@@ -24,7 +24,7 @@ const Result: React.FC = () => {
     useEffect(() => {
         async function getAllResults() {
             try {
-                const response = await axios.get("http://localhost:3333/Result");
+                const response = await axios.get("http://192.168.173.1:3333/Result");
                 const fetchedResults = response.data.Result || response.data;
                 if (Array.isArray(fetchedResults)) {
                     setResults(fetchedResults);

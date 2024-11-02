@@ -50,7 +50,7 @@ const StudentLogin: React.FC = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.get("http://localhost:3333/User");
+            const response = await axios.get("http://192.168.173.1:3333/User");
             const users = response.data;
 
             const foundUser = users.find(

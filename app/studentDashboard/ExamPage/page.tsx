@@ -65,7 +65,7 @@ const ExamPage = () => {
     if (loggedInUserEmail) {
       // Fetch user data from JSON server to get the class name of the logged-in user
       axios
-        .get("http://localhost:3333/User")
+        .get("http://192.168.173.1:3333/User")
         .then((response) => {
           const userData = response.data.find(
             (user: { user_email: string; }) => user.user_email === loggedInUserEmail      );
@@ -88,7 +88,7 @@ const ExamPage = () => {
     const fetchQuestions = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:3333/Question?exam_name=${examName}&class_name=${userClass}`);
+        const response = await axios.get(`http://192.168.173.1:3333/Question?exam_name=${examName}&class_name=${userClass}`);
         const formattedQuestions = response.data.map((ques, index) => {
           const options = [...ques.incorrect_answers, ques.correct_answer].sort(() => Math.random() - 0.5);
           return {
@@ -155,7 +155,7 @@ const ExamPage = () => {
     };
 
     try {
-      await axios.post('http://localhost:3333/Result', results);
+      await axios.post('http://192.168.173.1:3333/Result', results);
      // alert('Results saved successfully!');
     } catch (error) {
       console.error('Error saving results:', error);

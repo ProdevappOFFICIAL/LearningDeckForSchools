@@ -53,7 +53,7 @@ function StudentList() {
     useEffect(() => {
         async function getAllStudents() {
             try {
-                const response = await axios.get("http://localhost:3333/User");
+                const response = await axios.get("http://192.168.173.1:3333/User");
                 setStudents(response.data);
                 setNo(response.data.length);
                
@@ -90,14 +90,14 @@ function StudentList() {
     const handleSignupOrUpdate = async () => {
         try {
             if (isEdit) {
-                await axios.put(`http://localhost:3333/User/${userData.id}`, userData); // Update by `id`
+                await axios.put(`http://192.168.173.1:3333/User/${userData.id}`, userData); // Update by `id`
                 alert("Student details updated.");
             } else {
                 // Set the new ID based on the current total count of students
                 const newId = students.length + 1;
                 const newStudent = { ...userData, id: newId.toString() };
     
-                await axios.post("http://localhost:3333/User", newStudent); // Add new student
+                await axios.post("http://192.168.173.1:3333/User", newStudent); // Add new student
                 alert("New student added.");
             }
             setIsEdit(false);

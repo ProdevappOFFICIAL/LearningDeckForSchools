@@ -18,7 +18,7 @@ function Exams() {
     // Fetch all exams
     async function fetchExams() {
         try {
-            const response = await axios.get("http://localhost:3333/ExamCombination");
+            const response = await axios.get("http://192.168.173.1:3333/ExamCombination");
             setExams(response.data);
         } catch (error) {
             console.error("Error fetching exams:", error);
@@ -52,11 +52,11 @@ function Exams() {
         try {
             if (isEditing && selectedExam) {
                 // Update the selected exam
-                await axios.put(`http://localhost:3333/ExamCombination/${selectedExam.id}`, form);
+                await axios.put(`http://192.168.173.1:3333/ExamCombination/${selectedExam.id}`, form);
                 console.log("Exam updated successfully");
             } else {
                 // Add a new exam
-                await axios.post("http://localhost:3333/ExamCombination", form);
+                await axios.post("http://192.168.173.1:3333/ExamCombination", form);
                 console.log("New exam added successfully");
             }
             setForm({ exam_name: "", class_name: "", minutes: "", seconds: "" });
@@ -71,7 +71,7 @@ function Exams() {
     // Handle deleting an exam
     async function handleDeleteClick(examId) {
         try {
-            await axios.delete(`http://localhost:3333/ExamCombination/${examId}`);
+            await axios.delete(`http://192.168.173.1:3333/ExamCombination/${examId}`);
             console.log("Exam deleted successfully");
             fetchExams(); // Refresh exams list
         } catch (error) {

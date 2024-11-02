@@ -26,7 +26,7 @@ function ExamCombination() {
     if (loggedInUserEmail) {
       // Fetch user data from JSON server to get the class name of the logged-in user
       axios
-        .get("http://localhost:3333/User")
+        .get("http://192.168.173.1:3333/User")
         .then((response) => {
           const userData = response.data.find(
             (user: { user_email: string; }) => user.user_email === loggedInUserEmail      );
@@ -52,7 +52,7 @@ function ExamCombination() {
     if (userClass) {
       setLoading(true); // Start loading
       axios
-        .get("http://localhost:3333/Batch")
+        .get("http://192.168.173.1:3333/Batch")
         .then((response) => {
           setBatchNo(response.data)
           console.log(" Batch number", response.data.Batch.batch_no );
@@ -68,7 +68,7 @@ function ExamCombination() {
     if (userClass) {
       setLoading(true); // Start loading
       axios
-        .get("http://localhost:3333/ExamCombination")
+        .get("http://192.168.173.1:3333/ExamCombination")
         .then((response) => {
           // Filter exams based on the class of the user
           const filteredExams = response.data.filter((exam) => {

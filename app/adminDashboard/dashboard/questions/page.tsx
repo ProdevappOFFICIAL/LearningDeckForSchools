@@ -67,7 +67,7 @@ function Question() {
     };
     const handleDeleteQuestion = async (questionId) => {
         try {
-            await axios.delete(`http://localhost:3333/Question/${questionId}`);
+            await axios.delete(`http://192.168.173.1:3333/Question/${questionId}`);
             fetchQuestions(); // Refresh the question list after deletion
             toast(`Question ${questionId} deleted succesfully `)
         } catch (error) {
@@ -81,12 +81,12 @@ function Question() {
             if (editMode && currentQuestionId) {
                 console.log("Updating question with ID:", currentQuestionId);
                  
-                await axios.put(`http://localhost:3333/Question/${currentQuestionId}`, userData);
+                await axios.put(`http://192.168.173.1:3333/Question/${currentQuestionId}`, userData);
                 toast(`Updated Question`, currentQuestionId);
                 //window.location.reload();
             } else {
                 console.log("Adding new question:", userData);
-                await axios.post("http://localhost:3333/Question", userData);
+                await axios.post("http://192.168.173.1:3333/Question", userData);
                 toast("Adding new question:", userData);
                 //window.location.reload();
             }
@@ -115,7 +115,7 @@ function Question() {
     const handleDeleteAll = async () => {
         try {
           // Step 1: Fetch all items
-          const fetchResponse = await fetch('http://localhost:3333/Question');
+          const fetchResponse = await fetch('http://192.168.173.1:3333/Question');
           
           // Check if the fetch was successful
           if (!fetchResponse.ok) {
@@ -126,7 +126,7 @@ function Question() {
       
           // Step 2: Delete each item individually
           const deletePromises = data.map((item) =>
-            fetch(`http://localhost:3333/Question/${item.id}`, {
+            fetch(`http://192.168.173.1:3333/Question/${item.id}`, {
               method: 'DELETE',
             })
           );
@@ -146,7 +146,7 @@ function Question() {
       
       const fetchQuestions = async () => {
         try {
-            const response = await axios.get("http://localhost:3333/Question");
+            const response = await axios.get("http://192.168.173.1:3333/Question");
             const filteredQuestions = classFilter
                 ? response.data.filter(question => question.class_name === classFilter)
                 : response.data;
@@ -215,6 +215,7 @@ const QuestionListHeader = () => (
 );
 
 const AddOrEditQuestionDialog = ({ userData, onTextFieldChange, handleAddOrUpdateQuestion, setOption, editMode }) => (
+    
     <AlertDialog>
         <AlertDialogTrigger asChild>
             <Button className="bg-blue-600 hover:bg-blue-400 text-white">
@@ -235,6 +236,8 @@ const AddOrEditQuestionDialog = ({ userData, onTextFieldChange, handleAddOrUpdat
                                              <input
                                              className=" ml-3"
                                              type="checkbox"
+                                             checked={isVisible}
+                                             onChange={handleCheckboxChange}
                                                 />
                                         </label>
                                        

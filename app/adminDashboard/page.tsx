@@ -22,7 +22,7 @@ const AdminLogin: React.FC = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.get("http://localhost:3333/Admin");
+            const response = await axios.get("http://192.168.173.1:3333/Admin");
             const users = response.data;
 
             const foundUser = users.find(
